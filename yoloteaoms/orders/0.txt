@@ -1,0 +1,8 @@
+Flavor: yolotaro
+Size: xl - 85.0
+Number: 2
+Sugar Level: full
+Sinker: none - 0.0
+Scoops: 0
+Customer: harvs
+Total Price: 170.0
