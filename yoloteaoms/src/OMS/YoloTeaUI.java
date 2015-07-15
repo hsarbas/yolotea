@@ -1,7 +1,3 @@
-package OMS;
-
-
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -12,51 +8,46 @@ package OMS;
  *
  * @author Jaztin Mojica
  */
+
 public class YoloTeaUI extends javax.swing.JFrame {
 
-    /**
-     * Creates new form YoloTeaUI
-     */
-    private final SpecsDialog specs1 = new SpecsDialog();
-    private final SpecsDialog specs2 = new SpecsDialog();
-    private final SpecsDialog specs3 = new SpecsDialog();
-    private final SpecsDialog specs4 = new SpecsDialog();
-    private final SpecsDialog specs5 = new SpecsDialog();
-    private final SpecsDialog specs6 = new SpecsDialog();
-    private final SpecsDialog specs7 = new SpecsDialog();
-    private final SpecsDialog specs8 = new SpecsDialog();
-    private final SpecsDialog specs9 = new SpecsDialog();
-    private final SpecsDialog specs10 = new SpecsDialog();
-    private final SpecsDialog specs11 = new SpecsDialog();
-    private final SpecsDialog specs12 = new SpecsDialog();
-    private final SpecsDialog specs13 = new SpecsDialog();
-    private final SpecsDialog specs14 = new SpecsDialog();
-    private final SpecsDialog specs15 = new SpecsDialog();
-    private final SpecsDialog specs16 = new SpecsDialog();
-    private final SpecsDialog specs17 = new SpecsDialog();
-
+  
     public YoloTeaUI() {
         initComponents();
-
-        milkTeaTab.addTab("Yolavit",null, specs1.getContentPane(),null);
-        milkTeaTab.addTab("Yolowinter",null, specs2.getContentPane(),null);
-        milkTeaTab.addTab("YoloTaro",null, specs3.getContentPane(),null);
-        milkTeaTab.addTab("Yolaberry",null, specs4.getContentPane(),null);
-        milkTeaTab.addTab("Yolonilla",null, specs5.getContentPane(),null);
-        milkTeaTab.addTab("Yolomatcha",null, specs6.getContentPane(),null);
-        milkTeaTab.addTab("Carpe Diem",null, specs7.getContentPane(),null);
-        milkTeaTab.addTab("WYSIWYG",null, specs8.getContentPane(),null);
-        milkTeaTab.addTab("C'est la vie",null, specs9.getContentPane(),null);
-        milkTeaTab.addTab("YoloChoco",null, specs10.getContentPane(),null);
-        milkTeaTab.addTab("Jasmint",null, specs11.getContentPane(),null);
-        milkTeaTab.addTab("YoloMocha",null, specs12.getContentPane(),null);
-        milkTeaTab.addTab("YoloFoam",null, specs13.getContentPane(),null);
-        milkTeaTab.addTab("YoloCaramel",null, specs14.getContentPane(),null);
-        milkTeaTab.addTab("La Dolce Vita",null, specs15.getContentPane(),null);
-        milkTeaTab.addTab("YoloKkaido",null, specs16.getContentPane(),null);
-        milkTeaTab.addTab("YoloChocoNana",null, specs17.getContentPane(),null);
-    }   
-
+        milkTeaComponents();
+        fruitTeaComponents();
+    }
+    
+    private void milkTeaComponents()
+    {
+        milkTeaTab.addTab("Yolavit", null, specs1.getContentPane(), null);
+        milkTeaTab.addTab("Yolowinter", null, specs2.getContentPane(), null);
+        milkTeaTab.addTab("YoloTaro", null, specs3.getContentPane(), null);
+        milkTeaTab.addTab("Yolaberry", null, specs4.getContentPane(), null);
+        milkTeaTab.addTab("Yolonilla", null, specs5.getContentPane(), null);
+        milkTeaTab.addTab("Yolomatcha", null, specs6.getContentPane(), null);
+        milkTeaTab.addTab("Carpe Diem", null, specs7.getContentPane(), null);
+        milkTeaTab.addTab("WYSIWYG", null, specs8.getContentPane(), null);
+        milkTeaTab.addTab("C'est la vie", null, specs9.getContentPane(), null);
+        milkTeaTab.addTab("YoloChoco", null, specs10.getContentPane(), null);
+        milkTeaTab.addTab("Jasmint", null, specs11.getContentPane(), null);
+        milkTeaTab.addTab("YoloMocha", null, specs12.getContentPane(), null);
+        milkTeaTab.addTab("YoloFoam", null, specs13.getContentPane(), null);
+        milkTeaTab.addTab("YoloCaramel", null, specs14.getContentPane(), null);
+        milkTeaTab.addTab("La Dolce Vita", null, specs15.getContentPane(), null);
+        milkTeaTab.addTab("YoloKkaido", null, specs16.getContentPane(), null);
+        milkTeaTab.addTab("YoloChocoNana", null, specs17.getContentPane(), null);
+    }
+    
+    private void fruitTeaComponents()
+    {
+        fruitTeaTab.addTab("YoloBlue", null, specs18.getContentPane(), null);
+        fruitTeaTab.addTab("YoloApple", null, specs19.getContentPane(), null);
+        fruitTeaTab.addTab("YoLychee", null, specs20.getContentPane(), null);
+        fruitTeaTab.addTab("Hakuna Matata", null, specs21.getContentPane(), null);
+        fruitTeaTab.addTab("Eureka", null, specs22.getContentPane(), null);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -67,6 +58,7 @@ public class YoloTeaUI extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
+        assamJasmineSizeGroup = new javax.swing.ButtonGroup();
         centerPanel = new javax.swing.JPanel();
         leftPanel = new javax.swing.JPanel();
         upperLeftPanel = new javax.swing.JPanel();
@@ -79,27 +71,52 @@ public class YoloTeaUI extends javax.swing.JFrame {
         selectionPanel = new javax.swing.JTabbedPane();
         milkTeaTab = new javax.swing.JTabbedPane();
         fruitTeaTab = new javax.swing.JTabbedPane();
-        jPanel19 = new javax.swing.JPanel();
-        jPanel20 = new javax.swing.JPanel();
-        jPanel21 = new javax.swing.JPanel();
-        jPanel22 = new javax.swing.JPanel();
-        jPanel23 = new javax.swing.JPanel();
         hotTeaTab = new javax.swing.JTabbedPane();
-        jPanel24 = new javax.swing.JPanel();
-        jPanel25 = new javax.swing.JPanel();
-        snacksTab = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        assamJasmine = new javax.swing.JPanel();
+        assamJasmineSize = new javax.swing.JPanel();
+        lAssamJasmine = new javax.swing.JRadioButton();
+        xlAssamJasmine = new javax.swing.JRadioButton();
+        assamJasmineQty = new javax.swing.JPanel();
+        assamJasmineQtySpinner = new javax.swing.JSpinner();
+        addAssamJasmine = new javax.swing.JButton();
+        stashTeaBag = new javax.swing.JPanel();
+        stashTeaBagQty = new javax.swing.JPanel();
+        stashTeaBagSpinner = new javax.swing.JSpinner();
+        addStashTeaBag = new javax.swing.JButton();
+        snacksPane = new javax.swing.JTabbedPane();
+        bw = new javax.swing.JPanel();
+        bwFlavorPanel = new javax.swing.JPanel();
+        bwFlavors = new javax.swing.JComboBox();
+        bwQty = new javax.swing.JPanel();
+        bwSpinner = new javax.swing.JSpinner();
+        addBw = new javax.swing.JButton();
+        nachos = new javax.swing.JPanel();
+        nachosQty = new javax.swing.JPanel();
+        nachosSpinner = new javax.swing.JSpinner();
+        extraCheese = new javax.swing.JPanel();
+        cheeseQty = new javax.swing.JLabel();
+        cheeseSpinner = new javax.swing.JSpinner();
+        addNachos = new javax.swing.JButton();
         combosTab = new javax.swing.JTabbedPane();
         xlbw = new javax.swing.JPanel();
+        bwTeaPanel = new javax.swing.JPanel();
+        bwTeaChoices = new javax.swing.JComboBox();
+        bwTeaFlavor = new javax.swing.JLabel();
+        bwComboPanel = new javax.swing.JPanel();
+        bwComboFlavor = new javax.swing.JLabel();
+        bwComboChoices = new javax.swing.JComboBox();
+        bwComboQty = new javax.swing.JPanel();
+        bwComboSpinner = new javax.swing.JSpinner();
+        addBWCombo = new javax.swing.JButton();
         xlnachos = new javax.swing.JPanel();
+        nachosTeaPanel = new javax.swing.JPanel();
+        nachosTeaFlavor = new javax.swing.JLabel();
+        nachosTeaChoices = new javax.swing.JComboBox();
+        nachosComboQty = new javax.swing.JPanel();
+        nachosComboSpinner = new javax.swing.JSpinner();
+        nachosExtraCheesePanel = new javax.swing.JPanel();
+        nachosExtraCheeseQty = new javax.swing.JSpinner();
+        addNachosCombo = new javax.swing.JButton();
         rightPanel = new javax.swing.JPanel();
         totalLabel = new javax.swing.JLabel();
         orderPanel = new javax.swing.JScrollPane();
@@ -107,8 +124,8 @@ public class YoloTeaUI extends javax.swing.JFrame {
         total = new javax.swing.JLabel();
         checkOutButton = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        accountsMenu = new javax.swing.JMenu();
+        storeMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -212,70 +229,444 @@ public class YoloTeaUI extends javax.swing.JFrame {
         selectionPanel.setMinimumSize(new java.awt.Dimension(200, 60));
 
         milkTeaTab.setTabPlacement(javax.swing.JTabbedPane.LEFT);
-        milkTeaTab.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        milkTeaTab.setFont(new java.awt.Font("Helvetica Neue", 0, 21)); // NOI18N
         selectionPanel.addTab("Milk Tea", milkTeaTab);
 
         fruitTeaTab.setTabPlacement(javax.swing.JTabbedPane.LEFT);
-        fruitTeaTab.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        fruitTeaTab.addTab("YoloBlue", jPanel19);
-        fruitTeaTab.addTab("YoloApple", jPanel20);
-        fruitTeaTab.addTab("YoLychee", jPanel21);
-        fruitTeaTab.addTab("Hakuna Matata", jPanel22);
-        fruitTeaTab.addTab("Eureka", jPanel23);
-
+        fruitTeaTab.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
         selectionPanel.addTab("Fruit Tea", fruitTeaTab);
 
         hotTeaTab.setTabPlacement(javax.swing.JTabbedPane.LEFT);
-        hotTeaTab.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        hotTeaTab.addTab("Assam/Jasmine", jPanel24);
-        hotTeaTab.addTab("Stash Tea Bag", jPanel25);
+        hotTeaTab.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
+
+        java.awt.GridBagLayout assamJasmineLayout = new java.awt.GridBagLayout();
+        assamJasmineLayout.columnWeights = new double[] {1.0};
+        assamJasmine.setLayout(assamJasmineLayout);
+
+        assamJasmineSize.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Size", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 0, 14))); // NOI18N
+        assamJasmineSize.setLayout(new java.awt.GridBagLayout());
+
+        assamJasmineSizeGroup.add(lAssamJasmine);
+        lAssamJasmine.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        lAssamJasmine.setText("Large (L)");
+        lAssamJasmine.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lAssamJasmineActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
+        assamJasmineSize.add(lAssamJasmine, gridBagConstraints);
+
+        assamJasmineSizeGroup.add(xlAssamJasmine);
+        xlAssamJasmine.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        xlAssamJasmine.setSelected(true);
+        xlAssamJasmine.setText("Extra Large (XL)");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
+        assamJasmineSize.add(xlAssamJasmine, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        assamJasmine.add(assamJasmineSize, gridBagConstraints);
+
+        assamJasmineQty.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Number of Drinks", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 0, 14))); // NOI18N
+        java.awt.GridBagLayout jPanel2Layout2 = new java.awt.GridBagLayout();
+        jPanel2Layout2.columnWeights = new double[] {1.0};
+        assamJasmineQty.setLayout(jPanel2Layout2);
+
+        assamJasmineQtySpinner.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        assamJasmineQtySpinner.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
+        assamJasmineQty.add(assamJasmineQtySpinner, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        assamJasmine.add(assamJasmineQty, gridBagConstraints);
+
+        addAssamJasmine.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        addAssamJasmine.setText("Add Order");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_START;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        assamJasmine.add(addAssamJasmine, gridBagConstraints);
+
+        hotTeaTab.addTab("Assam/Jasmine", assamJasmine);
+
+        java.awt.GridBagLayout stashTeaBagLayout = new java.awt.GridBagLayout();
+        stashTeaBagLayout.columnWeights = new double[] {1.0};
+        stashTeaBag.setLayout(stashTeaBagLayout);
+
+        stashTeaBagQty.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Number of Drinks", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 0, 14))); // NOI18N
+        java.awt.GridBagLayout jPanel3Layout1 = new java.awt.GridBagLayout();
+        jPanel3Layout1.columnWeights = new double[] {1.0};
+        stashTeaBagQty.setLayout(jPanel3Layout1);
+
+        stashTeaBagSpinner.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        stashTeaBagSpinner.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
+        stashTeaBagQty.add(stashTeaBagSpinner, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        stashTeaBag.add(stashTeaBagQty, gridBagConstraints);
+
+        addStashTeaBag.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        addStashTeaBag.setText("Add Order");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_START;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        stashTeaBag.add(addStashTeaBag, gridBagConstraints);
+
+        hotTeaTab.addTab("Stash Tea Bag", stashTeaBag);
 
         selectionPanel.addTab("Hot Tea", hotTeaTab);
 
-        snacksTab.setMinimumSize(new java.awt.Dimension(20, 20));
-        snacksTab.setLayout(new java.awt.GridLayout(9, 1));
+        snacksPane.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+        snacksPane.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
 
-        jButton1.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jButton1.setText("Plain Belgian Waffle");
-        snacksTab.add(jButton1);
+        java.awt.GridBagLayout bwLayout = new java.awt.GridBagLayout();
+        bwLayout.columnWeights = new double[] {1.0};
+        bw.setLayout(bwLayout);
 
-        jButton2.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jButton2.setText("Caramel Belgian Waffle");
-        snacksTab.add(jButton2);
+        bwFlavorPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Flavor", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 0, 14))); // NOI18N
+        java.awt.GridBagLayout bwFlavorPanelLayout = new java.awt.GridBagLayout();
+        bwFlavorPanelLayout.columnWeights = new double[] {1.0};
+        bwFlavorPanel.setLayout(bwFlavorPanelLayout);
 
-        jButton3.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jButton3.setText("Chocolate Belgian Waffle");
-        snacksTab.add(jButton3);
+        bwFlavors.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        bwFlavors.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Plain", "Caramel", "Chocolate", "Cheese", "Nutella", "Bananutella", "Blueberry Cheese" }));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        bwFlavorPanel.add(bwFlavors, gridBagConstraints);
 
-        jButton4.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jButton4.setText("Cheese Belgian Waffle");
-        snacksTab.add(jButton4);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        bw.add(bwFlavorPanel, gridBagConstraints);
 
-        jButton5.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jButton5.setText("Nutella Belgian Waffle");
-        snacksTab.add(jButton5);
+        bwQty.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Number of Orders", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 0, 14))); // NOI18N
+        java.awt.GridBagLayout bwQtyLayout = new java.awt.GridBagLayout();
+        bwQtyLayout.columnWeights = new double[] {1.0};
+        bwQty.setLayout(bwQtyLayout);
 
-        jButton6.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jButton6.setText("Bananutella Belgian Waffle");
-        snacksTab.add(jButton6);
+        bwSpinner.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        bwSpinner.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        bwQty.add(bwSpinner, gridBagConstraints);
 
-        jButton7.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jButton7.setText("Blueberry Cheese Belgian Waffle");
-        snacksTab.add(jButton7);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_START;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        bw.add(bwQty, gridBagConstraints);
 
-        jButton8.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jButton8.setText("Nachos");
-        snacksTab.add(jButton8);
+        addBw.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        addBw.setText("Add Order");
+        addBw.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addBwActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_START;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        bw.add(addBw, gridBagConstraints);
 
-        jButton9.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jButton9.setText("Extra Cheese");
-        snacksTab.add(jButton9);
+        snacksPane.addTab("Belgian Waffle", bw);
 
-        selectionPanel.addTab("YoloSnacks", snacksTab);
+        java.awt.GridBagLayout nachosLayout = new java.awt.GridBagLayout();
+        nachosLayout.columnWeights = new double[] {1.0};
+        nachos.setLayout(nachosLayout);
+
+        nachosQty.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Number of Orders", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 0, 14))); // NOI18N
+        java.awt.GridBagLayout nachosQtyLayout = new java.awt.GridBagLayout();
+        nachosQtyLayout.columnWeights = new double[] {1.0};
+        nachosQty.setLayout(nachosQtyLayout);
+
+        nachosSpinner.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        nachosSpinner.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        nachosQty.add(nachosSpinner, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        nachos.add(nachosQty, gridBagConstraints);
+
+        extraCheese.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Extra Cheese", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 0, 14))); // NOI18N
+        java.awt.GridBagLayout jPanel2Layout = new java.awt.GridBagLayout();
+        jPanel2Layout.rowWeights = new double[] {1.0};
+        extraCheese.setLayout(jPanel2Layout);
+
+        cheeseQty.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        cheeseQty.setText("Quantity:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        extraCheese.add(cheeseQty, gridBagConstraints);
+
+        cheeseSpinner.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        cheeseSpinner.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        extraCheese.add(cheeseSpinner, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        nachos.add(extraCheese, gridBagConstraints);
+
+        addNachos.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        addNachos.setText("Add Order");
+        addNachos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addNachosActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        nachos.add(addNachos, gridBagConstraints);
+
+        snacksPane.addTab("Nachos", nachos);
+
+        selectionPanel.addTab("YoloSnacks", snacksPane);
 
         combosTab.setTabPlacement(javax.swing.JTabbedPane.LEFT);
-        combosTab.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        combosTab.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
+
+        java.awt.GridBagLayout xlbwLayout = new java.awt.GridBagLayout();
+        xlbwLayout.columnWeights = new double[] {1.0};
+        xlbw.setLayout(xlbwLayout);
+
+        bwTeaPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tea", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 0, 14))); // NOI18N
+        bwTeaPanel.setMinimumSize(new java.awt.Dimension(20, 20));
+        bwTeaPanel.setLayout(new java.awt.GridBagLayout());
+
+        bwTeaChoices.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        bwTeaChoices.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "YolaVit", "YoloWinter", "YoloBerry", "YoloNilla", "YoloBlue", "YoloApple", "YoLychee", "Assam/Jasmine", "Stash Tea Bag" }));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        bwTeaPanel.add(bwTeaChoices, gridBagConstraints);
+
+        bwTeaFlavor.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        bwTeaFlavor.setText("Flavor:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        bwTeaPanel.add(bwTeaFlavor, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_START;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        xlbw.add(bwTeaPanel, gridBagConstraints);
+
+        bwComboPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Belgian Waffle", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 0, 14))); // NOI18N
+        bwComboPanel.setLayout(new java.awt.GridBagLayout());
+
+        bwComboFlavor.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        bwComboFlavor.setText("Flavor:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        bwComboPanel.add(bwComboFlavor, gridBagConstraints);
+
+        bwComboChoices.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        bwComboChoices.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Plain", "Caramel", "Choco", "Cheese", "Nutella", "Bananutella" }));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        bwComboPanel.add(bwComboChoices, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_START;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        xlbw.add(bwComboPanel, gridBagConstraints);
+
+        bwComboQty.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Number of Orders", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 0, 14))); // NOI18N
+        bwComboQty.setLayout(new java.awt.GridBagLayout());
+
+        bwComboSpinner.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        bwComboSpinner.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        bwComboQty.add(bwComboSpinner, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_START;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        xlbw.add(bwComboQty, gridBagConstraints);
+
+        addBWCombo.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        addBWCombo.setText("Add Order");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_START;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        xlbw.add(addBWCombo, gridBagConstraints);
+
         combosTab.addTab("XL + BW", xlbw);
+
+        java.awt.GridBagLayout xlnachosLayout = new java.awt.GridBagLayout();
+        xlnachosLayout.columnWeights = new double[] {1.0};
+        xlnachos.setLayout(xlnachosLayout);
+
+        nachosTeaPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tea", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 0, 14))); // NOI18N
+        nachosTeaPanel.setLayout(new java.awt.GridBagLayout());
+
+        nachosTeaFlavor.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        nachosTeaFlavor.setText("Flavor:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        nachosTeaPanel.add(nachosTeaFlavor, gridBagConstraints);
+
+        nachosTeaChoices.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        nachosTeaChoices.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Yolavit", "YoloWinter", "YoloBerry", "YoloNilla", "YoloBlue", "YoloApple", "YoLychee", "Assam/Jasmine", "Stash Tea Bag" }));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        nachosTeaPanel.add(nachosTeaChoices, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_START;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        xlnachos.add(nachosTeaPanel, gridBagConstraints);
+
+        nachosComboQty.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Number of Orders", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 0, 14))); // NOI18N
+        java.awt.GridBagLayout jPanel3Layout = new java.awt.GridBagLayout();
+        jPanel3Layout.columnWeights = new double[] {1.0};
+        nachosComboQty.setLayout(jPanel3Layout);
+
+        nachosComboSpinner.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        nachosComboSpinner.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        nachosComboQty.add(nachosComboSpinner, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        xlnachos.add(nachosComboQty, gridBagConstraints);
+
+        nachosExtraCheesePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Extra Cheese", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 0, 14))); // NOI18N
+        java.awt.GridBagLayout jPanel2Layout1 = new java.awt.GridBagLayout();
+        jPanel2Layout1.columnWeights = new double[] {1.0};
+        nachosExtraCheesePanel.setLayout(jPanel2Layout1);
+
+        nachosExtraCheeseQty.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        nachosExtraCheeseQty.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        nachosExtraCheesePanel.add(nachosExtraCheeseQty, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_START;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        xlnachos.add(nachosExtraCheesePanel, gridBagConstraints);
+
+        addNachosCombo.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        addNachosCombo.setText("Add Order");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_START;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        xlnachos.add(addNachosCombo, gridBagConstraints);
+
         combosTab.addTab("XL + Nachos", xlnachos);
 
         selectionPanel.addTab("YoloCombos", combosTab);
@@ -310,11 +701,6 @@ public class YoloTeaUI extends javax.swing.JFrame {
         rightPanel.add(totalLabel, gridBagConstraints);
 
         orderList.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
-        orderList.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
         orderPanel.setViewportView(orderList);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -361,48 +747,60 @@ public class YoloTeaUI extends javax.swing.JFrame {
 
         getContentPane().add(centerPanel, java.awt.BorderLayout.CENTER);
 
-        jMenu1.setText("Accounts");
-        jMenu1.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
-        menuBar.add(jMenu1);
+        accountsMenu.setText("Accounts");
+        accountsMenu.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        menuBar.add(accountsMenu);
 
-        jMenu2.setText("Store");
-        jMenu2.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
-        menuBar.add(jMenu2);
+        storeMenu.setText("Store");
+        storeMenu.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        menuBar.add(storeMenu);
 
         setJMenuBar(menuBar);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void addBwActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBwActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addBwActionPerformed
 
+    private void addNachosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNachosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addNachosActionPerformed
 
+    private void lAssamJasmineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lAssamJasmineActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lAssamJasmineActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
+        /* Set the Windows look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(YoloTeaUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(YoloTeaUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(YoloTeaUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(YoloTeaUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
             public void run() {
                 new YoloTeaUI().setVisible(true);
             }
@@ -410,47 +808,98 @@ public class YoloTeaUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu accountsMenu;
+    private javax.swing.JButton addAssamJasmine;
+    private javax.swing.JButton addBWCombo;
+    private javax.swing.JButton addBw;
+    private javax.swing.JButton addNachos;
+    private javax.swing.JButton addNachosCombo;
+    private javax.swing.JButton addStashTeaBag;
+    private javax.swing.JPanel assamJasmine;
+    private javax.swing.JPanel assamJasmineQty;
+    private javax.swing.JSpinner assamJasmineQtySpinner;
+    private javax.swing.JPanel assamJasmineSize;
+    private javax.swing.ButtonGroup assamJasmineSizeGroup;
+    private javax.swing.JPanel bw;
+    private javax.swing.JComboBox bwComboChoices;
+    private javax.swing.JLabel bwComboFlavor;
+    private javax.swing.JPanel bwComboPanel;
+    private javax.swing.JPanel bwComboQty;
+    private javax.swing.JSpinner bwComboSpinner;
+    private javax.swing.JPanel bwFlavorPanel;
+    private javax.swing.JComboBox bwFlavors;
+    private javax.swing.JPanel bwQty;
+    private javax.swing.JSpinner bwSpinner;
+    private javax.swing.JComboBox bwTeaChoices;
+    private javax.swing.JLabel bwTeaFlavor;
+    private javax.swing.JPanel bwTeaPanel;
     private javax.swing.JPanel centerPanel;
     private javax.swing.JButton checkOutButton;
+    private javax.swing.JLabel cheeseQty;
+    private javax.swing.JSpinner cheeseSpinner;
     private javax.swing.JTabbedPane combosTab;
     private javax.swing.JLabel employeeName;
     private javax.swing.JLabel employeeNameLabel;
+    private javax.swing.JPanel extraCheese;
     private javax.swing.JTabbedPane fruitTeaTab;
     private javax.swing.JTabbedPane hotTeaTab;
     private javax.swing.JLabel idNumber;
     private javax.swing.JLabel idNumberLabel;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JPanel jPanel19;
-    private javax.swing.JPanel jPanel20;
-    private javax.swing.JPanel jPanel21;
-    private javax.swing.JPanel jPanel22;
-    private javax.swing.JPanel jPanel23;
-    private javax.swing.JPanel jPanel24;
-    private javax.swing.JPanel jPanel25;
+    private javax.swing.JRadioButton lAssamJasmine;
     private javax.swing.JPanel leftPanel;
     private javax.swing.JLabel logo;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JTabbedPane milkTeaTab;
+    private javax.swing.JPanel nachos;
+    private javax.swing.JPanel nachosComboQty;
+    private javax.swing.JSpinner nachosComboSpinner;
+    private javax.swing.JPanel nachosExtraCheesePanel;
+    private javax.swing.JSpinner nachosExtraCheeseQty;
+    private javax.swing.JPanel nachosQty;
+    private javax.swing.JSpinner nachosSpinner;
+    private javax.swing.JComboBox nachosTeaChoices;
+    private javax.swing.JLabel nachosTeaFlavor;
+    private javax.swing.JPanel nachosTeaPanel;
     private javax.swing.JList orderList;
     private javax.swing.JScrollPane orderPanel;
     private javax.swing.JPanel rightPanel;
     private javax.swing.JTabbedPane selectionPanel;
-    private javax.swing.JPanel snacksTab;
+    private javax.swing.JTabbedPane snacksPane;
+    private javax.swing.JPanel stashTeaBag;
+    private javax.swing.JPanel stashTeaBagQty;
+    private javax.swing.JSpinner stashTeaBagSpinner;
+    private javax.swing.JMenu storeMenu;
     private javax.swing.JLabel total;
     private javax.swing.JLabel totalLabel;
     private javax.swing.JPanel upperLeftPanel;
     private javax.swing.JPanel userDetails;
+    private javax.swing.JRadioButton xlAssamJasmine;
     private javax.swing.JPanel xlbw;
     private javax.swing.JPanel xlnachos;
     // End of variables declaration//GEN-END:variables
+    
+    private final SpecsDialog specs1 = new SpecsDialog();
+    private final SpecsDialog specs2 = new SpecsDialog();
+    private final SpecsDialog specs3 = new SpecsDialog();
+    private final SpecsDialog specs4 = new SpecsDialog();
+    private final SpecsDialog specs5 = new SpecsDialog();
+    private final SpecsDialog specs6 = new SpecsDialog();
+    private final SpecsDialog specs7 = new SpecsDialog();
+    private final SpecsDialog specs8 = new SpecsDialog();
+    private final SpecsDialog specs9 = new SpecsDialog();
+    private final SpecsDialog specs10 = new SpecsDialog();
+    private final SpecsDialog specs11 = new SpecsDialog();
+    private final SpecsDialog specs12 = new SpecsDialog();
+    private final SpecsDialog specs13 = new SpecsDialog();
+    private final SpecsDialog specs14 = new SpecsDialog();
+    private final SpecsDialog specs15 = new SpecsDialog();
+    private final SpecsDialog specs16 = new SpecsDialog();
+    private final SpecsDialog specs17 = new SpecsDialog();
+
+    //for fruit tea
+    private final SpecsDialog specs18 = new SpecsDialog();
+    private final SpecsDialog specs19 = new SpecsDialog();
+    private final SpecsDialog specs20 = new SpecsDialog();
+    private final SpecsDialog specs21 = new SpecsDialog();
+    private final SpecsDialog specs22 = new SpecsDialog();
 }
