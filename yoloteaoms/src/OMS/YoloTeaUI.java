@@ -1,3 +1,8 @@
+package OMS;
+
+import javax.swing.DefaultListModel;
+
+        
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,9 +15,14 @@
  */
 
 public class YoloTeaUI extends javax.swing.JFrame {
+    DefaultListModel model;
+    
+    void orderList_add() {
+        model.addElement("item 1");        
+    }
 
-  
     public YoloTeaUI() {
+        model = new DefaultListModel();
         initComponents();
         milkTeaComponents();
         fruitTeaComponents();
@@ -120,7 +130,7 @@ public class YoloTeaUI extends javax.swing.JFrame {
         rightPanel = new javax.swing.JPanel();
         totalLabel = new javax.swing.JLabel();
         orderPanel = new javax.swing.JScrollPane();
-        orderList = new javax.swing.JList();
+        orderList = new javax.swing.JList(model);
         total = new javax.swing.JLabel();
         checkOutButton = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
@@ -128,8 +138,8 @@ public class YoloTeaUI extends javax.swing.JFrame {
         storeMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setAlwaysOnTop(true);
         setBackground(java.awt.Color.lightGray);
+        setBounds(new java.awt.Rectangle(0, 0, 0, 0));
         setExtendedState(6);
         setUndecorated(true);
 
@@ -788,19 +798,16 @@ public class YoloTeaUI extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(YoloTeaUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(YoloTeaUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(YoloTeaUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(YoloTeaUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new YoloTeaUI().setVisible(true);
             }

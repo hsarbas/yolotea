@@ -1,3 +1,8 @@
+package OMS;
+
+import javax.swing.JOptionPane;
+//import OMS.YoloTeaUI;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -390,6 +395,11 @@ public class SpecsDialog extends javax.swing.JFrame {
 
         placeOrderButton.setFont(new java.awt.Font("Helvetica Neue", 0, 16)); // NOI18N
         placeOrderButton.setText("Add Order");
+        placeOrderButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                placeOrderButtonActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
@@ -484,6 +494,13 @@ public class SpecsDialog extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_panacottaBoxActionPerformed
 
+    private void placeOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeOrderButtonActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "Order placed");
+        //YoloTeaUI test = OMS.YoloTeaUI();
+        //test.orderList_add();
+    }//GEN-LAST:event_placeOrderButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -551,4 +568,5 @@ public class SpecsDialog extends javax.swing.JFrame {
     private javax.swing.JPanel sugarPanel;
     private javax.swing.JRadioButton xlButton;
     // End of variables declaration//GEN-END:variables
+
 }
