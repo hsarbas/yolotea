@@ -44,7 +44,7 @@ def popup_login(parent):
                 self.top.grab_release()
                 self.top.destroy()
             else:
-                tm.showerror("Login error", "Incorrect username", parent=self.top)
+                tm.showerror("Login error", "Incorrect username/password", parent=self.top)
 
     pop = _popup()
     parent.wait_window(pop.top)
@@ -80,7 +80,6 @@ def popup_checkout(parent):
             self.top.grab_set()
 
         def do(self, event=None):
-            # self.value = self.splits_field.get()
             customer_name = self.customer_name_field.get()
 
             if len(customer_name) > 0:

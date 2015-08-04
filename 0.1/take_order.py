@@ -90,24 +90,36 @@ class Yolotea(ttk.Frame):
 
     # order details labelframe for milktea and fruit tea
     def labelframe_order_details_milktea_fruittea(self, f):
+
         labelframe = ttk.LabelFrame(f, text="Order Details")
-        labelframe.pack(side=LEFT, fill=BOTH, expand=TRUE, padx=30, pady=10)
+        labelframe.pack(side=LEFT, fill=BOTH, expand=TRUE, padx=10, pady=10)
 
-        labelframe_size = ttk.LabelFrame(labelframe, text="Size")
-        labelframe_sugarlevel = ttk.LabelFrame(labelframe, text="Sugar Level")
-        labelframe_numdrink = ttk.LabelFrame(labelframe, text="Number of Drinks")
-        labelframe_sinkers = ttk.LabelFrame(labelframe, text="Sinkers")
-        btn_addtocart = ttk.Button(labelframe, text="Add Order to Cart", command=None)
+        f1 = ttk.Frame(labelframe) # order details frame
+        f2 = ttk.Frame(labelframe) # checkout button frame
+        f3 = ttk.Frame(f1) # left frame
+        f4 = ttk.Frame(f1) # right frame
+        f5 = ttk.Frame(f3) # size frame
+        f6 = ttk.Frame(f3) # sugar level frame
+        f7 = ttk.Frame(f3) # quantity frame
+        f1.pack(side=TOP)
+        f2.pack(side=TOP, fill=BOTH)
+        f3.pack(side=LEFT)
+        f4.pack(side=LEFT)
+        f5.pack(side=TOP)
+        f6.pack(side=TOP)
+        f7.pack(side=TOP)
 
-        labelframe_size.pack(side=TOP, fill=X, expand=TRUE, padx=10, pady=10)
-        labelframe_sugarlevel.pack(side=TOP, fill=X, expand=TRUE, padx=10, pady=10)
-        labelframe_numdrink.pack(side=TOP, fill=X, expand=TRUE, padx=10, pady=10)
-        labelframe_sinkers.pack(side=TOP, fill=X, expand=TRUE, padx=10, pady=10)
-        btn_addtocart.pack(side=TOP, fill=BOTH, expand=TRUE, padx=10, pady=10)
+        labelframe_size = ttk.LabelFrame(f5, text="Size")
+        labelframe_sugarlevel = ttk.LabelFrame(f5, text="Sugar Level")
+        labelframe_numdrink = ttk.LabelFrame(f5, text="Number of Drinks")
+        labelframe_sinkers = ttk.LabelFrame(f4, text="Sinkers")
+        btn_addtocart = ttk.Button(f2, text="Add Order to Cart", command=None)
 
-        for x in range(0, 6):
-            Grid.grid_columnconfigure(labelframe_sinkers, x, weight=1)
-            Grid.grid_rowconfigure(labelframe_sinkers, x, weight=1)
+        labelframe_size.pack(side=TOP, fill=BOTH, expand=TRUE, padx=5, pady=5)
+        labelframe_sugarlevel.pack(side=TOP, fill=BOTH, expand=TRUE, padx=5, pady=5)
+        labelframe_numdrink.pack(side=TOP, fill=BOTH, expand=TRUE, padx=5, pady=5)
+        labelframe_sinkers.pack(side=TOP, fill=BOTH, expand=TRUE, padx=5, pady=5)
+        btn_addtocart.pack(side=BOTTOM, fill=BOTH, expand=TRUE, padx=5, pady=5)
 
         radiobox_L = ttk.Radiobutton(labelframe_size, text="Large (L)", value=0, command=None)
         radiobox_XL = ttk.Radiobutton(labelframe_size, text="Extra Large (XL)", value=1, command=None)
@@ -158,6 +170,7 @@ class Yolotea(ttk.Frame):
         entry_nata_crystals.grid(row=2, column=2, padx=10, pady=10, sticky=N+S+E+W)
         entry_foam.grid(row=3, column=2, padx=10, pady=10, sticky=N+S+E+W)
         entry_panacotta.grid(row=4, column=2, padx=10, pady=10, sticky=N+S+E+W)
+
 
     # order details labelframe for hottea
     def labelframe_order_details_hottea(self, f):
