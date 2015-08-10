@@ -11,7 +11,7 @@ def popup_login(parent):
         def __init__(self):
             self.top = Toplevel(parent, takefocus=True)
             self.top.resizable(0, 0)
-            self.top.title("Login")
+            self.top.title("Yolotea Login")
             self.value = None
 
             self.frame = ttk.Frame(self.top)
@@ -83,11 +83,55 @@ def popup_checkout(parent):
             customer_name = self.customer_name_field.get()
 
             if len(customer_name) > 0:
+                self.value = customer_name
                 tm.showinfo("Checkout Success", "Order successfully placed")
                 self.top.grab_release()
                 self.top.destroy()
             else:
                 tm.showerror("Checkout Error", "Enter Customer Name", parent=self.top)
+
+    pop = _popup()
+    parent.wait_window(pop.top)
+
+    value = pop.value
+    del pop
+
+    return value
+
+def popup_add_to_cart(parent):
+    class _popup(object):
+
+        def __init__(self):
+            self.top = Toplevel(parent, takefocus=True)
+            self.top.resizable(0, 0)
+            self.top.title("Add To Cart")
+            self.value = None
+
+            self.frame = ttk.Frame(self.top)
+            self.frame.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
+
+            self.labelframe1 = ttk.LabelFrame(self.frame, text='Confirm Action')
+            self.labelframe1.pack(fill="both", expand="yes", padx=5, pady=5)
+            self.customer_name_label = Label(self.labelframe1, text="Add Order to Cart?")
+            self.customer_name_label.grid(row=0, column=0, padx=3, pady=5)
+
+            self.yes_btn = Button(self.frame, text='Yes', command=self.do)
+            self.no_btn = Button(self.frame, text='No', command=self.no)
+            self.yes_btn.pack(side=LEFT, padx=5, pady=10)
+            self.no_btn.pack(side=LEFT, padx=5, pady=10)
+            self.yes_btn.focus_set()
+            self.top.bind("<Return>", self.do)
+            self.top.grab_set()
+
+        def do(self, event=None):
+            self.value = 1
+            self.top.grab_release()
+            self.top.destroy()
+
+        def no(self, event=None):
+            self.value = 0
+            self.top.grab_release()
+            self.top.destroy()
 
     pop = _popup()
     parent.wait_window(pop.top)

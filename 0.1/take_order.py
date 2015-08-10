@@ -8,17 +8,34 @@ import popups
 class Yolotea(ttk.Frame):
   
     def __init__(self, parent):
-        Frame.__init__(self, parent)   
-        self.pack(fill=BOTH)
+        Frame.__init__(self, parent)
+
+        self.order_num = 0
+        self.order = {'flavor': "", 'size': "", 'sugar_level': "", 'quantity': "", 'sinkers':"", 'customer':""}
+
+        """
+        self.flavor = None
+        self.size = None
+        self.sugar_level = None
+        self.quantity = None
+        self.sinkers = None
+        """
+
+        self.chosen_flavor = None
+        self.chosen_size = StringVar()
+        self.chosen_sugar = StringVar()
+        self.chosen_num = None
+
         self.parent = parent
+        self.init_menubar()
+        self.pack(fill=BOTH)
         self.initUI()
         self.start_login()
-        self.init_menubar()
         self.init_paned_window()
         
     def initUI(self):
       
-        self.parent.title("Yolotea Order System")
+        self.parent.title("Yolotea Order Management System")
         self.style = Style()
         self.style.theme_use("clam")
         self.pack(fill=BOTH, expand=1)
@@ -87,6 +104,40 @@ class Yolotea(ttk.Frame):
 
     def checkout(self):
         value = popups.popup_checkout(self)
+        self.order['customer'] = value
+        print self.order['customer']
+        self.create_file()
+
+    def create_file(self):
+        f = open("orders/"+str(self.order_num)+".txt", "w")
+
+        f.write("Flavor: " + self.order['flavor'] + "\n")
+        f.write("Size: " + self.order['size'] + "\n")
+        f.write("Sugar Level: " + self.order['sugar_level'] + "\n")
+        f.write("Customer: " + self.order['customer'])
+
+        f.close()
+        self.order_num = self.order_num + 1
+
+    def set_flavor(self, flavor, val):
+        # self.flavor = flavor
+        self.order['flavor'] = flavor
+        val.configure(text=flavor)
+
+    def set_size(self):
+        # self.size = self.chosen_size.get()
+        self.order['size'] = self.chosen_size.get()
+        print self.order['size']
+
+    def set_sugar(self):
+        # self.sugar_level = self.chosen_sugar.get()
+        self.order['sugar_level'] = self.chosen_sugar.get()
+        print self.order['sugar_level']
+
+    def add_to_cart(self):
+        value = popups.popup_add_to_cart(self)
+        if value == 1:
+            pass
 
     # order details labelframe for milktea and fruit tea
     def labelframe_order_details_milktea_fruittea(self, f):
@@ -95,45 +146,46 @@ class Yolotea(ttk.Frame):
         labelframe.pack(side=LEFT, fill=BOTH, expand=TRUE, padx=10, pady=10)
 
         f1 = ttk.Frame(labelframe) # order details frame
-        f2 = ttk.Frame(labelframe) # checkout button frame
+        f2 = ttk.Frame(labelframe) # add to cart button frame
         f3 = ttk.Frame(f1) # left frame
         f4 = ttk.Frame(f1) # right frame
-        f5 = ttk.Frame(f3) # size frame
-        f6 = ttk.Frame(f3) # sugar level frame
-        f7 = ttk.Frame(f3) # quantity frame
-        f1.pack(side=TOP)
+        f5 = ttk.Frame(labelframe) # chosen flavor frame
+        f5.pack(side=TOP, fill=BOTH)
+        f1.pack(side=TOP, fill=BOTH)
         f2.pack(side=TOP, fill=BOTH)
-        f3.pack(side=LEFT)
-        f4.pack(side=LEFT)
-        f5.pack(side=TOP)
-        f6.pack(side=TOP)
-        f7.pack(side=TOP)
+        f3.pack(side=LEFT, fill=BOTH, expand=TRUE)
+        f4.pack(side=RIGHT, fill=BOTH, expand=TRUE)
 
-        labelframe_size = ttk.LabelFrame(f5, text="Size")
-        labelframe_sugarlevel = ttk.LabelFrame(f5, text="Sugar Level")
-        labelframe_numdrink = ttk.LabelFrame(f5, text="Number of Drinks")
+        labelframe_chosenflavor = ttk.LabelFrame(f5, text="Chosen Flavor")
+        labelframe_size = ttk.LabelFrame(f3, text="Size")
+        labelframe_sugarlevel = ttk.LabelFrame(f3, text="Sugar Level")
+        labelframe_numdrink = ttk.LabelFrame(f3, text="Number of Drinks")
         labelframe_sinkers = ttk.LabelFrame(f4, text="Sinkers")
-        btn_addtocart = ttk.Button(f2, text="Add Order to Cart", command=None)
+        btn_addtocart = ttk.Button(f2, text="Add Order to Cart", command=self.add_to_cart)
 
+        labelframe_chosenflavor.pack(side=TOP, fill=BOTH, expand=TRUE, padx=5, pady=5)
         labelframe_size.pack(side=TOP, fill=BOTH, expand=TRUE, padx=5, pady=5)
         labelframe_sugarlevel.pack(side=TOP, fill=BOTH, expand=TRUE, padx=5, pady=5)
         labelframe_numdrink.pack(side=TOP, fill=BOTH, expand=TRUE, padx=5, pady=5)
         labelframe_sinkers.pack(side=TOP, fill=BOTH, expand=TRUE, padx=5, pady=5)
-        btn_addtocart.pack(side=BOTTOM, fill=BOTH, expand=TRUE, padx=5, pady=5)
+        btn_addtocart.pack(side=BOTTOM, fill=BOTH, expand=TRUE, padx=5, pady=5, ipady=20)
 
-        radiobox_L = ttk.Radiobutton(labelframe_size, text="Large (L)", value=0, command=None)
-        radiobox_XL = ttk.Radiobutton(labelframe_size, text="Extra Large (XL)", value=1, command=None)
+        label_chosenflavor = ttk.Label(labelframe_chosenflavor)
+        label_chosenflavor.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
+        radiobox_L = ttk.Radiobutton(labelframe_size, text="Large (L)", value="Large", variable=self.chosen_size, command=self.set_size)
+        radiobox_XL = ttk.Radiobutton(labelframe_size, text="Extra Large (XL)", value="Extra Large", variable=self.chosen_size, command=self.set_size)
         radiobox_L.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
         radiobox_XL.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
 
-        radiobox_full = ttk.Radiobutton(labelframe_sugarlevel, text="Full (100%)", value=2, command=None)
-        radiobox_half = ttk.Radiobutton(labelframe_sugarlevel, text="Half (50%)", value=3, command=None)
-        radiobox_none = ttk.Radiobutton(labelframe_sugarlevel, text="None (0%)", value=4, command=None)
+        radiobox_full = ttk.Radiobutton(labelframe_sugarlevel, text="Full (100%)", value="Full", variable=self.chosen_sugar, command=self.set_sugar)
+        radiobox_half = ttk.Radiobutton(labelframe_sugarlevel, text="Half (50%)", value="Half", variable=self.chosen_sugar, command=self.set_sugar)
+        radiobox_none = ttk.Radiobutton(labelframe_sugarlevel, text="None (0%)", value="None", variable=self.chosen_sugar, command=self.set_sugar)
         radiobox_full.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
         radiobox_half.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
         radiobox_none.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
 
         label_quantity = ttk.Label(labelframe_numdrink, text="Quantity", anchor=tk.E)
+        entry_quantity = ttk.Entry(labelframe_numdrink)
         entry_quantity = ttk.Entry(labelframe_numdrink)
         label_quantity.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
         entry_quantity.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
@@ -171,19 +223,35 @@ class Yolotea(ttk.Frame):
         entry_foam.grid(row=3, column=2, padx=10, pady=10, sticky=N+S+E+W)
         entry_panacotta.grid(row=4, column=2, padx=10, pady=10, sticky=N+S+E+W)
 
+        return label_chosenflavor
 
     # order details labelframe for hottea
     def labelframe_order_details_hottea(self, f):
         labelframe = ttk.LabelFrame(f, text="Order Details")
-        labelframe.pack(side=LEFT, fill=BOTH, expand=TRUE, padx=30, pady=10)
+        labelframe.pack(side=LEFT, fill=BOTH, expand=TRUE, padx=10, pady=10)
 
-        labelframe_size = ttk.LabelFrame(labelframe, text="Size")
-        labelframe_numdrink = ttk.LabelFrame(labelframe, text="Number of Drinks")
-        btn_addtocart = ttk.Button(labelframe, text="Add Order to Cart", command=None)
+        f1 = ttk.Frame(labelframe) #order details frame
+        f2 = ttk.Frame(labelframe) # add to cart button frame
+        f3 = ttk.Frame(f1) # size frame
+        f4 = ttk.Frame(f1) # quantity frame
+        f5 = ttk.Frame(f1)
+        f5.pack(side=TOP, fill=BOTH)
+        f1.pack(side=TOP, fill=BOTH)
+        f2.pack(side=TOP, fill=BOTH)
+        f3.pack(side=LEFT, fill=BOTH, expand=TRUE)
+        f4.pack(side=LEFT, fill=BOTH, expand=TRUE)
+
+        labelframe_chosenflavor = ttk.LabelFrame(f5, text="Chosen Flavor")
+        labelframe_size = ttk.LabelFrame(f3, text="Size")
+        labelframe_numdrink = ttk.LabelFrame(f4, text="Number of Drinks")
+        btn_addtocart = ttk.Button(f2, text="Add Order to Cart", command=None)
+        labelframe_chosenflavor.pack(side=TOP, fill=BOTH, expand=TRUE, padx=5, pady=5)
         labelframe_size.pack(side=TOP, fill=BOTH, padx=10, pady=10)
         labelframe_numdrink.pack(side=TOP, fill=BOTH, padx=10, pady=10)
-        btn_addtocart.pack(side=TOP, fill=BOTH, expand=TRUE, padx=10, pady=10)
+        btn_addtocart.pack(side=TOP, fill=BOTH, expand=TRUE, padx=10, pady=10, ipady=20)
 
+        label_chosenflavor = ttk.Label(labelframe_chosenflavor)
+        label_chosenflavor.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
         radiobox_L = ttk.Radiobutton(labelframe_size, text="Large (L)", value=0, command=None)
         radiobox_XL = ttk.Radiobutton(labelframe_size, text="Extra Large (XL)", value=1, command=None)
         radiobox_L.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
@@ -193,6 +261,10 @@ class Yolotea(ttk.Frame):
         entry_quantity = ttk.Entry(labelframe_numdrink)
         label_quantity.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
         entry_quantity.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
+
+        return label_chosenflavor
+
+
 
     def frame_milktea(self):
         f = ttk.Frame(self.notebook)
@@ -204,23 +276,23 @@ class Yolotea(ttk.Frame):
             Grid.grid_columnconfigure(labelframe, x, weight=1)
             Grid.grid_rowconfigure(labelframe, x, weight=1)
 
-        btn = ttk.Button(labelframe, text='  Yolavit  ', command=None)
-        btn2 = ttk.Button(labelframe, text='  Yolowinter  ', command=None)
-        btn3 = ttk.Button(labelframe, text='  YoloTaro  ', command=None)
-        btn4 = ttk.Button(labelframe, text='  Yolaberry  ', command=None)
-        btn5 = ttk.Button(labelframe, text='  Yolonilla  ', command=None)
-        btn6 = ttk.Button(labelframe, text='  Yolomatcha  ', command=None)
-        btn7 = ttk.Button(labelframe, text='  Carpe Diem  ', command=None)
-        btn8 = ttk.Button(labelframe, text='  WYSIWYG  ', command=None)
-        btn9 = ttk.Button(labelframe, text="  C'est la vie  ", command=None)
-        btn10 = ttk.Button(labelframe, text='YoloChoco', command=None)
-        btn11 = ttk.Button(labelframe, text='Jasmint', command=None)
-        btn12 = ttk.Button(labelframe, text='YoloMocha', command=None)
-        btn13 = ttk.Button(labelframe, text='YoloFoam', command=None)
-        btn14 = ttk.Button(labelframe, text='YoloCaramel', command=None)
-        btn15 = ttk.Button(labelframe, text='La Dolce Vita', command=None)
-        btn16 = ttk.Button(labelframe, text='YoloKkaido', command=None)
-        btn17 = ttk.Button(labelframe, text='YoloChocoNana', command=None)
+        btn = ttk.Button(labelframe, text='Yolavit', command=lambda:self.set_flavor("Yolavit", val))
+        btn2 = ttk.Button(labelframe, text='Yolowinter', command=lambda:self.set_flavor("Yolowinter", val))
+        btn3 = ttk.Button(labelframe, text='YoloTaro', command=lambda:self.set_flavor("YoloTaro", val))
+        btn4 = ttk.Button(labelframe, text='Yolaberry', command=lambda:self.set_flavor("Yolaberry", val))
+        btn5 = ttk.Button(labelframe, text='Yolonilla', command=lambda:self.set_flavor("Yolonilla", val))
+        btn6 = ttk.Button(labelframe, text='Yolomatcha', command=lambda:self.set_flavor("Yolomatcha", val))
+        btn7 = ttk.Button(labelframe, text='Carpe Diem', command=lambda:self.set_flavor("Carpe Diem", val))
+        btn8 = ttk.Button(labelframe, text='WYSIWYG', command=lambda:self.set_flavor("WYSIWYG", val))
+        btn9 = ttk.Button(labelframe, text="C'est la vie", command=lambda:self.set_flavor("C'est la vie", val))
+        btn10 = ttk.Button(labelframe, text='YoloChoco', command=lambda:self.set_flavor("YoloChoco", val))
+        btn11 = ttk.Button(labelframe, text='Jasmint', command=lambda:self.set_flavor("Jasmint", val))
+        btn12 = ttk.Button(labelframe, text='YoloMocha', command=lambda:self.set_flavor("YoloMocha", val))
+        btn13 = ttk.Button(labelframe, text='YoloFoam', command=lambda:self.set_flavor("YoloFoam", val))
+        btn14 = ttk.Button(labelframe, text='YoloCaramel', command=lambda:self.set_flavor("YoloCaramel", val))
+        btn15 = ttk.Button(labelframe, text='La Dolce Vita', command=lambda:self.set_flavor("La Dolce Vita", val))
+        btn16 = ttk.Button(labelframe, text='YoloKkaido', command=lambda:self.set_flavor("YoloKkaido", val))
+        btn17 = ttk.Button(labelframe, text='YoloChocoNana', command=lambda:self.set_flavor("YoloChocoNana", val))
 
         btn.grid(row=0, column=0, padx=5, pady=5, sticky=N+S+E+W)
         btn2.grid(row=1, column=0, padx=5, pady=5, sticky=N+S+E+W)
@@ -240,7 +312,7 @@ class Yolotea(ttk.Frame):
         btn16.grid(row=6, column=1, padx=5, pady=5, sticky=N+S+E+W)
         btn17.grid(row=7, column=1, padx=5, pady=5, sticky=N+S+E+W)
 
-        self.labelframe_order_details_milktea_fruittea(f)
+        val = self.labelframe_order_details_milktea_fruittea(f)
         self.notebook.add(f, text='MilkTea')
 
     def frame_fruittea(self):
@@ -253,19 +325,19 @@ class Yolotea(ttk.Frame):
             Grid.grid_columnconfigure(labelframe, x, weight=1)
             Grid.grid_rowconfigure(labelframe, x, weight=1)
 
-        btn = ttk.Button(labelframe, text='    YoloBlue    ', command=None)
-        btn2 = ttk.Button(labelframe, text='    YoloApple    ', command=None)
-        btn3 = ttk.Button(labelframe, text='    YoLychee    ', command=None)
-        btn4 = ttk.Button(labelframe, text='    Hakuna Matata    ', command=None)
-        btn5 = ttk.Button(labelframe, text='    Eurika    ', command=None)
+        btn = ttk.Button(labelframe, text='YoloBlue', command=lambda:self.flavor_cmd("YoloBlue", val))
+        btn2 = ttk.Button(labelframe, text='YoloApple', command=lambda:self.flavor_cmd("YoloApple", val))
+        btn3 = ttk.Button(labelframe, text='YoLychee', command=lambda:self.flavor_cmd("YoLychee", val))
+        btn4 = ttk.Button(labelframe, text='Hakuna Matata', command=lambda:self.flavor_cmd("Hakuna Matata", val))
+        btn5 = ttk.Button(labelframe, text='Eurika', command=lambda:self.flavor_cmd("Eurika", val))
 
-        btn.grid(row=0, column=0, padx=5, pady=5, sticky=N+S+E+W)
+        btn.grid(row=0, column=0, padx=5, pady=5, ipadx=60, sticky=N+S+E+W)
         btn2.grid(row=1, column=0, padx=5, pady=5, sticky=N+S+E+W)
         btn3.grid(row=2, column=0, padx=5, pady=5, sticky=N+S+E+W)
         btn4.grid(row=3, column=0, padx=5, pady=5, sticky=N+S+E+W)
         btn5.grid(row=4, column=0, padx=5, pady=5, sticky=N+S+E+W)
 
-        self.labelframe_order_details_milktea_fruittea(f)
+        val = self.labelframe_order_details_milktea_fruittea(f)
         self.notebook.add(f, text='FruitTea')
 
     def frame_hottea(self):
@@ -278,13 +350,13 @@ class Yolotea(ttk.Frame):
             Grid.grid_columnconfigure(labelframe, x, weight=1)
             Grid.grid_rowconfigure(labelframe, x, weight=1)
 
-        btn = ttk.Button(labelframe, text='   Assam/ Jasmine   ', command=None)
-        btn2 = ttk.Button(labelframe, text='   Stash Tea Bag   ', command=None)
+        btn = ttk.Button(labelframe, text='Assam/Jasmine', command=lambda:self.flavor_cmd("Assam/Jasmine", val))
+        btn2 = ttk.Button(labelframe, text='Stash Tea Bag', command=lambda:self.flavor_cmd("Stash Tea Bag", val))
 
-        btn.grid(row=0, column=0, padx=5, pady=5, sticky=N+S+E+W)
+        btn.grid(row=0, column=0, padx=5, pady=5, ipadx=52, sticky=N+S+E+W)
         btn2.grid(row=1, column=0, padx=5, pady=5, sticky=N+S+E+W)
 
-        self.labelframe_order_details_milktea_fruittea(f)
+        val = self.labelframe_order_details_hottea(f)
         self.notebook.add(f, text='HotTea')
 
     def frame_snacks(self):
@@ -297,10 +369,10 @@ class Yolotea(ttk.Frame):
             Grid.grid_columnconfigure(labelframe, x, weight=1)
             Grid.grid_rowconfigure(labelframe, x, weight=1)
 
-        btn = ttk.Button(labelframe, text='    Belgian Waffle    ', command=None)
-        btn2 = ttk.Button(labelframe, text='    Nachos    ', command=None)
+        btn = ttk.Button(labelframe, text='Belgian Waffle', command=None)
+        btn2 = ttk.Button(labelframe, text='Nachos', command=None)
 
-        btn.grid(row=0, column=0, padx=5, pady=5, sticky=N+S+E+W)
+        btn.grid(row=0, column=0, padx=5, pady=5, ipadx=55, sticky=N+S+E+W)
         btn2.grid(row=1, column=0, padx=5, pady=5, sticky=N+S+E+W)
 
         self.labelframe_order_details_milktea_fruittea(f)
@@ -316,10 +388,10 @@ class Yolotea(ttk.Frame):
             Grid.grid_columnconfigure(labelframe, x, weight=1)
             Grid.grid_rowconfigure(labelframe, x, weight=1)
 
-        btn = ttk.Button(labelframe, text='      XL + BW      ', command=None)
-        btn2 = ttk.Button(labelframe, text='      XL + Nachos      ', command=None)
+        btn = ttk.Button(labelframe, text='XL + BW', command=None)
+        btn2 = ttk.Button(labelframe, text=' XL + Nachos', command=None)
 
-        btn.grid(row=0, column=0, padx=5, pady=5, sticky=N+S+E+W)
+        btn.grid(row=0, column=0, padx=5, pady=5, ipadx=60, sticky=N+S+E+W)
         btn2.grid(row=1, column=0, padx=5, pady=5, sticky=N+S+E+W)
 
         self.labelframe_order_details_milktea_fruittea(f)
