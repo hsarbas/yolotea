@@ -94,9 +94,11 @@ class Yolotea(ttk.Frame):
 
         # cart details labelframe
         self.labelframe_orderDetails = ttk.LabelFrame(self, text="Cart Details")
-        self.labelframe_orderDetails.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
-        self.order_listbox = tk.Label(self.labelframe_orderDetails, height=28, width=60, bg="white")
-        self.order_listbox.pack(side=TOP, padx=5, pady=5)
+        self.labelframe_orderDetails.pack(side=LEFT, expand=True, fill=BOTH, padx=10, pady=10)
+        # self.order_listbox = tk.Label(self.labelframe_orderDetails, height=28, width=60, bg="white")
+        # self.order_listbox.pack(side=TOP, padx=5, pady=5)
+        self.order_label = ttk.Label(self.labelframe_orderDetails)
+        self.order_label.pack(side=TOP, fill=BOTH, expand=True, padx=5, pady=5)
         self.total_label = ttk.Label(self.labelframe_orderDetails, text="Total Amount: P0.00")
         self.total_label.pack(side=TOP, fill=Y, pady=10)
         self.checkout_btn = ttk.Button(self.labelframe_orderDetails, text='Checkout Order', command=self.checkout)
@@ -137,7 +139,12 @@ class Yolotea(ttk.Frame):
     def add_to_cart(self):
         value = popups.popup_add_to_cart(self)
         if value == 1:
-            pass
+            self.order_label.configure(text="Flavor: " + self.order['flavor'] + "\n" +
+                                            "Size: " + self.order['size'] + "\n" +
+                                            "Sugar Level: " + self.order['sugar_level'] + "\n" +
+                                            "Quantity: " + self.order['quantity'] + "\n" +
+                                            "Sinkers: " + self.order['sinkers'])
+            # self.order_label.configure(text=self.order)
 
     # order details labelframe for milktea and fruit tea
     def labelframe_order_details_milktea_fruittea(self, f):
@@ -145,11 +152,11 @@ class Yolotea(ttk.Frame):
         labelframe = ttk.LabelFrame(f, text="Order Details")
         labelframe.pack(side=LEFT, fill=BOTH, expand=TRUE, padx=10, pady=10)
 
-        f1 = ttk.Frame(labelframe) # order details frame
-        f2 = ttk.Frame(labelframe) # add to cart button frame
-        f3 = ttk.Frame(f1) # left frame
-        f4 = ttk.Frame(f1) # right frame
-        f5 = ttk.Frame(labelframe) # chosen flavor frame
+        f1 = ttk.Frame(labelframe)  # order details frame
+        f2 = ttk.Frame(labelframe)  # add to cart button frame
+        f3 = ttk.Frame(f1)  # left frame
+        f4 = ttk.Frame(f1)  # right frame
+        f5 = ttk.Frame(labelframe)  # chosen flavor frame
         f5.pack(side=TOP, fill=BOTH)
         f1.pack(side=TOP, fill=BOTH)
         f2.pack(side=TOP, fill=BOTH)
@@ -185,7 +192,6 @@ class Yolotea(ttk.Frame):
         radiobox_none.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
 
         label_quantity = ttk.Label(labelframe_numdrink, text="Quantity", anchor=tk.E)
-        entry_quantity = ttk.Entry(labelframe_numdrink)
         entry_quantity = ttk.Entry(labelframe_numdrink)
         label_quantity.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
         entry_quantity.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
@@ -230,10 +236,10 @@ class Yolotea(ttk.Frame):
         labelframe = ttk.LabelFrame(f, text="Order Details")
         labelframe.pack(side=LEFT, fill=BOTH, expand=TRUE, padx=10, pady=10)
 
-        f1 = ttk.Frame(labelframe) #order details frame
-        f2 = ttk.Frame(labelframe) # add to cart button frame
-        f3 = ttk.Frame(f1) # size frame
-        f4 = ttk.Frame(f1) # quantity frame
+        f1 = ttk.Frame(labelframe)  # order details frame
+        f2 = ttk.Frame(labelframe)  # add to cart button frame
+        f3 = ttk.Frame(f1)  # size frame
+        f4 = ttk.Frame(f1)  # quantity frame
         f5 = ttk.Frame(f1)
         f5.pack(side=TOP, fill=BOTH)
         f1.pack(side=TOP, fill=BOTH)
@@ -264,8 +270,6 @@ class Yolotea(ttk.Frame):
 
         return label_chosenflavor
 
-
-
     def frame_milktea(self):
         f = ttk.Frame(self.notebook)
 
@@ -276,23 +280,23 @@ class Yolotea(ttk.Frame):
             Grid.grid_columnconfigure(labelframe, x, weight=1)
             Grid.grid_rowconfigure(labelframe, x, weight=1)
 
-        btn = ttk.Button(labelframe, text='Yolavit', command=lambda:self.set_flavor("Yolavit", val))
-        btn2 = ttk.Button(labelframe, text='Yolowinter', command=lambda:self.set_flavor("Yolowinter", val))
-        btn3 = ttk.Button(labelframe, text='YoloTaro', command=lambda:self.set_flavor("YoloTaro", val))
-        btn4 = ttk.Button(labelframe, text='Yolaberry', command=lambda:self.set_flavor("Yolaberry", val))
-        btn5 = ttk.Button(labelframe, text='Yolonilla', command=lambda:self.set_flavor("Yolonilla", val))
-        btn6 = ttk.Button(labelframe, text='Yolomatcha', command=lambda:self.set_flavor("Yolomatcha", val))
-        btn7 = ttk.Button(labelframe, text='Carpe Diem', command=lambda:self.set_flavor("Carpe Diem", val))
-        btn8 = ttk.Button(labelframe, text='WYSIWYG', command=lambda:self.set_flavor("WYSIWYG", val))
-        btn9 = ttk.Button(labelframe, text="C'est la vie", command=lambda:self.set_flavor("C'est la vie", val))
-        btn10 = ttk.Button(labelframe, text='YoloChoco', command=lambda:self.set_flavor("YoloChoco", val))
-        btn11 = ttk.Button(labelframe, text='Jasmint', command=lambda:self.set_flavor("Jasmint", val))
-        btn12 = ttk.Button(labelframe, text='YoloMocha', command=lambda:self.set_flavor("YoloMocha", val))
-        btn13 = ttk.Button(labelframe, text='YoloFoam', command=lambda:self.set_flavor("YoloFoam", val))
-        btn14 = ttk.Button(labelframe, text='YoloCaramel', command=lambda:self.set_flavor("YoloCaramel", val))
-        btn15 = ttk.Button(labelframe, text='La Dolce Vita', command=lambda:self.set_flavor("La Dolce Vita", val))
-        btn16 = ttk.Button(labelframe, text='YoloKkaido', command=lambda:self.set_flavor("YoloKkaido", val))
-        btn17 = ttk.Button(labelframe, text='YoloChocoNana', command=lambda:self.set_flavor("YoloChocoNana", val))
+        btn = ttk.Button(labelframe, text='Yolavit', command=lambda: self.set_flavor("Yolavit", val))
+        btn2 = ttk.Button(labelframe, text='Yolowinter', command=lambda: self.set_flavor("Yolowinter", val))
+        btn3 = ttk.Button(labelframe, text='YoloTaro', command=lambda: self.set_flavor("YoloTaro", val))
+        btn4 = ttk.Button(labelframe, text='Yolaberry', command=lambda: self.set_flavor("Yolaberry", val))
+        btn5 = ttk.Button(labelframe, text='Yolonilla', command=lambda: self.set_flavor("Yolonilla", val))
+        btn6 = ttk.Button(labelframe, text='Yolomatcha', command=lambda: self.set_flavor("Yolomatcha", val))
+        btn7 = ttk.Button(labelframe, text='Carpe Diem', command=lambda: self.set_flavor("Carpe Diem", val))
+        btn8 = ttk.Button(labelframe, text='WYSIWYG', command=lambda: self.set_flavor("WYSIWYG", val))
+        btn9 = ttk.Button(labelframe, text="C'est la vie", command=lambda: self.set_flavor("C'est la vie", val))
+        btn10 = ttk.Button(labelframe, text='YoloChoco', command=lambda: self.set_flavor("YoloChoco", val))
+        btn11 = ttk.Button(labelframe, text='Jasmint', command=lambda: self.set_flavor("Jasmint", val))
+        btn12 = ttk.Button(labelframe, text='YoloMocha', command=lambda: self.set_flavor("YoloMocha", val))
+        btn13 = ttk.Button(labelframe, text='YoloFoam', command=lambda: self.set_flavor("YoloFoam", val))
+        btn14 = ttk.Button(labelframe, text='YoloCaramel', command=lambda: self.set_flavor("YoloCaramel", val))
+        btn15 = ttk.Button(labelframe, text='La Dolce Vita', command=lambda: self.set_flavor("La Dolce Vita", val))
+        btn16 = ttk.Button(labelframe, text='YoloKkaido', command=lambda: self.set_flavor("YoloKkaido", val))
+        btn17 = ttk.Button(labelframe, text='YoloChocoNana', command=lambda: self.set_flavor("YoloChocoNana", val))
 
         btn.grid(row=0, column=0, padx=5, pady=5, sticky=N+S+E+W)
         btn2.grid(row=1, column=0, padx=5, pady=5, sticky=N+S+E+W)
@@ -396,6 +400,7 @@ class Yolotea(ttk.Frame):
 
         self.labelframe_order_details_milktea_fruittea(f)
         self.notebook.add(f, text='YoloCombos')
+
 
 def main():
   
