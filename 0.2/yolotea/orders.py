@@ -10,6 +10,13 @@ class MilkTea(object):
         self.quantity = kwargs['quantity']
         self.sinkers = kwargs['sinkers']
 
+    def serialize(self):
+        return dict(flavor=self.flavor,
+                    size=self.size,
+                    sugar=self.sugar,
+                    quantity=self.quantity,
+                    sinkers=self.sinkers)
+
 
 class FruitTea(object):
 
@@ -20,6 +27,13 @@ class FruitTea(object):
         self.quantity = kwargs['quantity']
         self.sinkers = kwargs['sinkers']
 
+    def serialize(self):
+        return dict(flavor=self.flavor,
+                    size=self.size,
+                    sugar=self.sugar,
+                    quantity=self.quantity,
+                    sinkers=self.sinkers)
+
 
 class HotTea(object):
 
@@ -27,6 +41,11 @@ class HotTea(object):
         self.flavor = kwargs['flavor']
         self.size = kwargs['size']
         self.quantity = kwargs['quantity']
+
+    def serialize(self):
+        return dict(flavor=self.flavor,
+                    size=self.size,
+                    quantity=self.quantity)
 
 
 class YoloSnack(object):
