@@ -1,3 +1,4 @@
-Flavor: 
-Size: 
-Sugar Level: 
+Flavor: YoloCaramel
+Size: Extra Large
+Sugar Level: Full
+Customer: taguro

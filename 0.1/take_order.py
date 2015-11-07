@@ -11,7 +11,7 @@ class Yolotea(ttk.Frame):
         Frame.__init__(self, parent)
 
         self.order_num = 0
-        self.order = {'flavor': "", 'size': "", 'sugar_level': "", 'quantity': "", 'sinkers':"", 'customer':""}
+        self.order = dict()
 
         """
         self.flavor = None
