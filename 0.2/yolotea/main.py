@@ -471,10 +471,10 @@ class Yolotea(ttk.Frame):
             quantity = self.temp_quantity
             order = HotTea(flavor=flavor, size=size, quantity=quantity)
             if self.order_label.cget("text") is None:
-                text = order.flavor + ' ' + order.size + ' ' + order.sugar
+                text = order.flavor + ' ' + order.size
                 self.order_label.configure(text=text)
             else:
-                text = self.order_label.cget("text") + '\n' + order.flavor + ' ' + order.size + ' ' + order.sugar
+                text = self.order_label.cget("text") + '\n' + order.flavor + ' ' + order.size
                 self.order_label.configure(text=text)
 
         elif src == 's':
