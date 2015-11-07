@@ -33,11 +33,11 @@ class Yolotea(ttk.Frame):
         self.__init_hottea_frame__()
         self.__init_snacks_frame__()
         self.__init_combo_frame__()
-        self.__init_milktea_details()
-        self.__init_fruittea_details()
-        self.__init_hottea_details()
-        self.__init_snack_details()
-        self.__init_combo_details()
+        self.__init_milktea_details__()
+        self.__init_fruittea_details__()
+        self.__init_hottea_details__()
+        self.__init_snack_details__()
+        self.__init_combo_details__()
 
     def __init_style__(self):
         self.parent.title("Yolotea Order Management System")
@@ -199,7 +199,7 @@ class Yolotea(ttk.Frame):
 
         self.notebook.add(self.cf, text='YoloCombos')
 
-    def __init_milktea_details(self):
+    def __init_milktea_details__(self):
         labelframe = ttk.LabelFrame(self.mf, text="Order Details")
         labelframe.pack(side=LEFT, fill=BOTH, expand=TRUE, padx=10, pady=10)
 
@@ -285,7 +285,7 @@ class Yolotea(ttk.Frame):
         entry_foam.grid(row=3, column=2, padx=10, pady=10, sticky=N+S+E+W)
         entry_panacotta.grid(row=4, column=2, padx=10, pady=10, sticky=N+S+E+W)
 
-    def __init_fruittea_details(self):
+    def __init_fruittea_details__(self):
         labelframe = ttk.LabelFrame(self.ff, text="Order Details")
         labelframe.pack(side=LEFT, fill=BOTH, expand=TRUE, padx=10, pady=10)
 
@@ -371,7 +371,7 @@ class Yolotea(ttk.Frame):
         entry_foam.grid(row=3, column=2, padx=10, pady=10, sticky=N+S+E+W)
         entry_panacotta.grid(row=4, column=2, padx=10, pady=10, sticky=N+S+E+W)
 
-    def __init_hottea_details(self):
+    def __init_hottea_details__(self):
         labelframe = ttk.LabelFrame(self.hf, text="Order Details")
         labelframe.pack(side=LEFT, fill=BOTH, expand=TRUE, padx=10, pady=10)
 
@@ -409,10 +409,10 @@ class Yolotea(ttk.Frame):
         label_quantity.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
         entry_quantity.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
 
-    def __init_snack_details(self):
+    def __init_snack_details__(self):
         pass
 
-    def __init_combo_details(self):
+    def __init_combo_details__(self):
         pass
 
     def set_flavor(self, flavor, stringvar):
