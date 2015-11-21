@@ -26,6 +26,7 @@ class Yolotea(ttk.Frame):
         self.temp_sinkers = []
 
         self.customer = None
+        self.orders = []
 
         self.__init_style__()
         self.__init_account_details_container__()
@@ -73,7 +74,7 @@ class Yolotea(ttk.Frame):
         self.total_label.pack(side=TOP, fill=Y, pady=10)
         self.delete_btn = ttk.Button(self.labelframe_orderDetails, text='Cancel Order', command=self.cancel_order)
         self.delete_btn.pack(side=TOP, fill=BOTH, expand=TRUE, padx=10, pady=10)
-        self.checkout_btn = ttk.Button(self.labelframe_orderDetails, text='Checkout Order', command=None)
+        self.checkout_btn = ttk.Button(self.labelframe_orderDetails, text='Checkout Order', command=self.checkout)
         self.checkout_btn.pack(side=TOP, fill=BOTH, expand=TRUE, padx=10, pady=10)
 
     def __init_milktea_frame__(self):
@@ -253,9 +254,9 @@ class Yolotea(ttk.Frame):
         radiobutton_none.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
 
         label_quantity = ttk.Label(labelframe_numdrink, text="Quantity", anchor=tk.E)
-        entry_quantity = ttk.Entry(labelframe_numdrink)
+        self.entry_quantity_m = ttk.Entry(labelframe_numdrink)
         label_quantity.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
-        entry_quantity.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
+        self.entry_quantity_m.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
 
         checkbutton_popping_bobba = ttk.Checkbutton(labelframe_sinkers, text="Popping Bobba")
         checkbutton_black_pearls = ttk.Checkbutton(labelframe_sinkers, text="Black Pearls")
@@ -339,9 +340,9 @@ class Yolotea(ttk.Frame):
         radiobutton_none.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
 
         label_quantity = ttk.Label(labelframe_numdrink, text="Quantity", anchor=tk.E)
-        entry_quantity = ttk.Entry(labelframe_numdrink)
+        self.entry_quantity_f = ttk.Entry(labelframe_numdrink)
         label_quantity.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
-        entry_quantity.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
+        self.entry_quantity_f.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
 
         checkbutton_popping_bobba = ttk.Checkbutton(labelframe_sinkers, text="Popping Bobba")
         checkbutton_black_pearls = ttk.Checkbutton(labelframe_sinkers, text="Black Pearls")
@@ -410,9 +411,9 @@ class Yolotea(ttk.Frame):
         radiobutton_xl.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
 
         label_quantity = ttk.Label(labelframe_numdrink, text="Quantity", anchor=tk.E)
-        entry_quantity = ttk.Entry(labelframe_numdrink)
+        self.entry_quantity_h = ttk.Entry(labelframe_numdrink)
         label_quantity.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
-        entry_quantity.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
+        self.entry_quantity_h.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
 
     def __init_snack_details__(self):
         pass
@@ -435,7 +436,7 @@ class Yolotea(ttk.Frame):
 
     def set_quantity(self, quantity):
         self.temp_quantity = quantity
-        return True
+        return self.temp_quantity
 
     def set_sinkers(self, sinkers):
         self.temp_sinkers = sinkers
@@ -449,35 +450,38 @@ class Yolotea(ttk.Frame):
                 flavor = self.temp_flavor
                 sugar = self.temp_sugar
                 size = self.temp_size
-                quantity = self.temp_quantity
+                quantity = self.set_quantity(self.entry_quantity_m.get())
                 sinkers = []
 
                 order = MilkTea(flavor=flavor, sugar=sugar, size=size, quantity=quantity, sinkers=sinkers,
                                 customer=customer)
+                self.orders.append(order)
                 self.print_to_cart(order)
 
             elif customer and src == 'f':
                 flavor = self.temp_flavor
                 sugar = self.temp_sugar
                 size = self.temp_size
-                quantity = self.temp_quantity
+                quantity = self.set_quantity(self.entry_quantity_f.get())
                 sinkers = []
                 order = FruitTea(flavor=flavor, sugar=sugar, size=size, quantity=quantity, sinkers=sinkers,
                                  customer=customer)
+                self.orders.append(order)
                 self.print_to_cart(order)
 
             elif customer and src == 'h':
                 flavor = self.temp_flavor
                 size = self.temp_size
-                quantity = self.temp_quantity
+                quantity = self.set_quantity(self.entry_quantity_h.get())
                 order = HotTea(flavor=flavor, size=size, quantity=quantity, customer=customer)
+                self.orders.append(order)
                 self.print_to_cart(order)
 
             elif customer and src == 's':
-                order = YoloSnack()
+                pass
 
             elif customer and src == 'c':
-                order = YoloCombo()
+                pass
 
         else:
             popups.popup_incomplete_details_error(self)
@@ -485,15 +489,23 @@ class Yolotea(ttk.Frame):
         return True
 
     def print_to_cart(self, order):
-        entry = order.flavor + ' ' + order.customer
+        entry = order.flavor + ' - ' + order.customer
         self.order_listbox.insert(END, entry)
 
         return True
 
     def cancel_order(self):
+        item = []
         value = popups.popup_cancel_order(self)
         if value == 1:
+            item = map(int, self.order_listbox.curselection())
             self.order_listbox.delete(ANCHOR)
+        self.orders.pop(item[0])
+
+    def checkout(self):
+        for order in self.orders:
+            save = order.serialize()
+            print save
 
 
 def main():
