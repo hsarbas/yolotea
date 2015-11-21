@@ -24,7 +24,7 @@
       <file leaf-file-name="take_order.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/take_order.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
+            <state vertical-scroll-proportion="0.0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
                 <element signature="e#157#721#0" expanded="false" />
@@ -63,7 +63,7 @@
       <file leaf-file-name="popups.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/popups.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.3125">
+            <state vertical-scroll-proportion="0.0">
               <caret line="115" column="74" selection-start-line="115" selection-start-column="74" selection-end-line="115" selection-end-column="74" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
@@ -368,7 +368,7 @@
     <frame x="0" y="0" width="960" height="1032" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1762208" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1762208" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3264865" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -406,6 +406,53 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/take_order.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#157#721#0" expanded="false" />
+            <element signature="e#768#925#0" expanded="false" />
+            <element signature="e#962#994#0" expanded="false" />
+            <element signature="e#1032#2244#0" expanded="false" />
+            <element signature="e#2287#4140#0" expanded="false" />
+            <element signature="e#4174#4312#0" expanded="false" />
+            <element signature="e#4349#4699#0" expanded="false" />
+            <element signature="e#4748#4843#0" expanded="false" />
+            <element signature="e#4877#4998#0" expanded="false" />
+            <element signature="e#5033#5177#0" expanded="false" />
+            <element signature="e#5214#5772#0" expanded="false" />
+            <element signature="e#5900#11536#0" expanded="false" />
+            <element signature="e#11638#13596#0" expanded="false" />
+            <element signature="e#13635#17064#0" expanded="false" />
+            <element signature="e#17104#18411#0" expanded="false" />
+            <element signature="e#18449#19241#0" expanded="false" />
+            <element signature="e#19279#19985#0" expanded="false" />
+            <element signature="e#20023#20728#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/orders/0.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="19" selection-start-line="0" selection-start-column="19" selection-end-line="0" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/popups.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="115" column="74" selection-start-line="115" selection-start-column="74" selection-end-line="115" selection-end-column="74" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+            <element signature="e#129#2006#0" expanded="false" />
+            <element signature="e#2040#3620#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/take_order.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1206,7 +1253,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/popups.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.3125">
+        <state vertical-scroll-proportion="0.0">
           <caret line="115" column="74" selection-start-line="115" selection-start-column="74" selection-end-line="115" selection-end-column="74" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />

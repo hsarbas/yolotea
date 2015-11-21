@@ -1,4 +1,5 @@
 *.pyc
+*.xml
 .idea
 .tmp_simfile
 .tmp_mapfile
