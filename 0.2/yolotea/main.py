@@ -32,11 +32,11 @@ class Yolotea(ttk.Frame):
         self.__init_account_details_container__()
         self.__init_notebook_container__()
         self.__init_cart_container__()
-        self.__init_milktea_frame__()
-        self.__init_fruittea_frame__()
-        self.__init_hottea_frame__()
-        self.__init_snacks_frame__()
-        self.__init_combo_frame__()
+        self.__init_milktea_flavors__()
+        self.__init_fruittea_flavors__()
+        self.__init_hottea_flavors__()
+        self.__init_snacks_flavors__()
+        self.__init_combo_flavors__()
         self.__init_milktea_details__()
         self.__init_fruittea_details__()
         self.__init_hottea_details__()
@@ -77,7 +77,7 @@ class Yolotea(ttk.Frame):
         self.checkout_btn = ttk.Button(self.labelframe_orderDetails, text='Checkout Order', command=self.checkout)
         self.checkout_btn.pack(side=TOP, fill=BOTH, expand=TRUE, padx=10, pady=10)
 
-    def __init_milktea_frame__(self):
+    def __init_milktea_flavors__(self):
         self.mf = ttk.Frame(self.notebook)
 
         # milktea flavors
@@ -127,7 +127,7 @@ class Yolotea(ttk.Frame):
 
         self.notebook.add(self.mf, text='MilkTea')
 
-    def __init_fruittea_frame__(self):
+    def __init_fruittea_flavors__(self):
         self.ff = ttk.Frame(self.notebook)
 
         labelframe = ttk.LabelFrame(self.ff, text="Flavors")
@@ -151,7 +151,7 @@ class Yolotea(ttk.Frame):
 
         self.notebook.add(self.ff, text='FruitTea')
 
-    def __init_hottea_frame__(self):
+    def __init_hottea_flavors__(self):
         self.hf = ttk.Frame(self.notebook)
 
         labelframe = ttk.LabelFrame(self.hf, text="Flavors")
@@ -169,7 +169,7 @@ class Yolotea(ttk.Frame):
 
         self.notebook.add(self.hf, text='HotTea')
 
-    def __init_snacks_frame__(self):
+    def __init_snacks_flavors__(self):
         self.sf = ttk.Frame(self.notebook)
 
         # snacks
@@ -187,7 +187,7 @@ class Yolotea(ttk.Frame):
 
         self.notebook.add(self.sf, text='YoloSnacks')
 
-    def __init_combo_frame__(self):
+    def __init_combo_flavors__(self):
         self.cf = ttk.Frame(self.notebook)
 
         # combos
