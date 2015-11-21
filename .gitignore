@@ -1,0 +1,6 @@
+*.pyc
+.idea
+.tmp_simfile
+.tmp_mapfile
+.DS_STORE
+.xml

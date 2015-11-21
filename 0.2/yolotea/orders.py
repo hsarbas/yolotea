@@ -9,13 +9,15 @@ class MilkTea(object):
         self.sugar = kwargs['sugar']
         self.quantity = kwargs['quantity']
         self.sinkers = kwargs['sinkers']
+        self.customer = kwargs['customer']
 
     def serialize(self):
         return dict(flavor=self.flavor,
                     size=self.size,
                     sugar=self.sugar,
                     quantity=self.quantity,
-                    sinkers=self.sinkers)
+                    sinkers=self.sinkers,
+                    customer=self.customer)
 
 
 class FruitTea(object):
@@ -26,13 +28,15 @@ class FruitTea(object):
         self.sugar = kwargs['sugar']
         self.quantity = kwargs['quantity']
         self.sinkers = kwargs['sinkers']
+        self.customer = kwargs['customer']
 
     def serialize(self):
         return dict(flavor=self.flavor,
                     size=self.size,
                     sugar=self.sugar,
                     quantity=self.quantity,
-                    sinkers=self.sinkers)
+                    sinkers=self.sinkers,
+                    customer=self.customer)
 
 
 class HotTea(object):
@@ -41,11 +45,13 @@ class HotTea(object):
         self.flavor = kwargs['flavor']
         self.size = kwargs['size']
         self.quantity = kwargs['quantity']
+        self.customer = kwargs['customer']
 
     def serialize(self):
         return dict(flavor=self.flavor,
                     size=self.size,
-                    quantity=self.quantity)
+                    quantity=self.quantity,
+                    customer=self.customer)
 
 
 class YoloSnack(object):
@@ -54,7 +60,7 @@ class YoloSnack(object):
         pass
 
 
-class YoloCOmbo(object):
+class YoloCombo(object):
 
     def __init__(self, **kwargs):
         pass

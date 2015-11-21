@@ -1,4 +1,4 @@
-__author__ = 'Windows User'
+__author__ = 'Harvs'
 
 import Tkinter as tk
 from Tkinter import *
@@ -6,6 +6,7 @@ from ttk import *
 import ttk
 
 from orders import *
+import popups
 
 
 class Yolotea(ttk.Frame):
@@ -23,6 +24,8 @@ class Yolotea(ttk.Frame):
         self.temp_sugar = None
         self.temp_quantity = None
         self.temp_sinkers = []
+
+        self.customer = None
 
         self.__init_style__()
         self.__init_account_details_container__()
@@ -64,12 +67,14 @@ class Yolotea(ttk.Frame):
         self.labelframe_orderDetails.pack(side=LEFT, expand=True, fill=BOTH, padx=10, pady=10)
         self.items = ttk.LabelFrame(self.labelframe_orderDetails, text="Items")
         self.items.pack(side=TOP, fill=BOTH, expand=True, padx=5, pady=5)
-        self.order_label = ttk.Label(self.items)
-        self.order_label.pack(side=TOP, fill=BOTH, expand=True, padx=5, pady=5)
+        self.order_listbox = Listbox(self.items)
+        self.order_listbox.pack(side=TOP, fill=BOTH, expand=True, padx=5, pady=5)
         self.total_label = ttk.Label(self.labelframe_orderDetails, text="Total Amount: P0.00")
         self.total_label.pack(side=TOP, fill=Y, pady=10)
+        self.delete_btn = ttk.Button(self.labelframe_orderDetails, text='Cancel Order', command=self.cancel_order)
+        self.delete_btn.pack(side=TOP, fill=BOTH, expand=TRUE, padx=10, pady=10)
         self.checkout_btn = ttk.Button(self.labelframe_orderDetails, text='Checkout Order', command=None)
-        self.checkout_btn.pack(side=BOTTOM, fill=BOTH, expand=TRUE, padx=10, pady=10)
+        self.checkout_btn.pack(side=TOP, fill=BOTH, expand=TRUE, padx=10, pady=10)
 
     def __init_milktea_frame__(self):
         self.mf = ttk.Frame(self.notebook)
@@ -230,22 +235,22 @@ class Yolotea(ttk.Frame):
 
         label_chosenflavor = ttk.Label(labelframe_chosenflavor, textvariable=self.m_str)
         label_chosenflavor.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
-        radiobox_L = ttk.Radiobutton(labelframe_size, text="Large (L)", variable=self.temp_size, value=0,
-                                     command=lambda: self.set_size('Large'))
-        radiobox_XL = ttk.Radiobutton(labelframe_size, text="Extra Large (XL)", variable=self.temp_size, value=1,
-                                      command=lambda: self.set_size('Extra Large'))
-        radiobox_L.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
-        radiobox_XL.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
+        radiobutton_l = ttk.Radiobutton(labelframe_size, text="Large (L)", variable=self.temp_size, value=0,
+                                        command=lambda: self.set_size('Large'))
+        radiobutton_xl = ttk.Radiobutton(labelframe_size, text="Extra Large (XL)", variable=self.temp_size, value=1,
+                                         command=lambda: self.set_size('Extra Large'))
+        radiobutton_l.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
+        radiobutton_xl.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
 
-        radiobox_full = ttk.Radiobutton(labelframe_sugarlevel, text="Full (100%)", variable=self.temp_sugar, value=2,
-                                        command=lambda: self.set_sugar('Full'))
-        radiobox_half = ttk.Radiobutton(labelframe_sugarlevel, text="Half (50%)", variable=self.temp_sugar, value=3,
-                                        command=lambda: self.set_sugar('Half'))
-        radiobox_none = ttk.Radiobutton(labelframe_sugarlevel, text="None (0%)", variable=self.temp_sugar, value=4,
-                                        command=lambda: self.set_sugar('None'))
-        radiobox_full.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
-        radiobox_half.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
-        radiobox_none.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
+        radiobutton_full = ttk.Radiobutton(labelframe_sugarlevel, text="Full (100%)", variable=self.temp_sugar, value=2,
+                                           command=lambda: self.set_sugar('Full'))
+        radiobutton_half = ttk.Radiobutton(labelframe_sugarlevel, text="Half (50%)", variable=self.temp_sugar, value=3,
+                                           command=lambda: self.set_sugar('Half'))
+        radiobutton_none = ttk.Radiobutton(labelframe_sugarlevel, text="None (0%)", variable=self.temp_sugar, value=4,
+                                           command=lambda: self.set_sugar('None'))
+        radiobutton_full.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
+        radiobutton_half.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
+        radiobutton_none.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
 
         label_quantity = ttk.Label(labelframe_numdrink, text="Quantity", anchor=tk.E)
         entry_quantity = ttk.Entry(labelframe_numdrink)
@@ -314,24 +319,24 @@ class Yolotea(ttk.Frame):
         labelframe_sinkers.pack(side=TOP, fill=BOTH, expand=TRUE, padx=5, pady=5)
         btn_addtocart.pack(side=BOTTOM, fill=BOTH, expand=TRUE, padx=5, pady=5, ipady=20)
 
-        label_chosenflavor = ttk.Label(labelframe_chosenflavor, textvariable=self.f_str)
-        label_chosenflavor.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
-        radiobox_L = ttk.Radiobutton(labelframe_size, text="Large (L)", variable=self.temp_size,
-                                     command=lambda: self.set_size('Large'))
-        radiobox_XL = ttk.Radiobutton(labelframe_size, text="Extra Large (XL)", variable=self.temp_size,
-                                      command=lambda: self.set_size('Extra Large'))
-        radiobox_L.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
-        radiobox_XL.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
+        label_chosen_flavor = ttk.Label(labelframe_chosenflavor, textvariable=self.f_str)
+        label_chosen_flavor.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
+        radiobutton_l = ttk.Radiobutton(labelframe_size, text="Large (L)", variable=self.temp_size,
+                                        command=lambda: self.set_size('Large'))
+        radiobutton_xl = ttk.Radiobutton(labelframe_size, text="Extra Large (XL)", variable=self.temp_size,
+                                         command=lambda: self.set_size('Extra Large'))
+        radiobutton_l.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
+        radiobutton_xl.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
 
-        radiobox_full = ttk.Radiobutton(labelframe_sugarlevel, text="Full (100%)", variable=self.temp_sugar,
-                                        command=lambda: self.set_sugar('Full'))
-        radiobox_half = ttk.Radiobutton(labelframe_sugarlevel, text="Half (50%)", variable=self.temp_sugar,
-                                        command=lambda: self.set_sugar('Half'))
-        radiobox_none = ttk.Radiobutton(labelframe_sugarlevel, text="None (0%)", variable=self.temp_sugar,
-                                        command=lambda: self.set_sugar('None'))
-        radiobox_full.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
-        radiobox_half.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
-        radiobox_none.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
+        radiobutton_full = ttk.Radiobutton(labelframe_sugarlevel, text="Full (100%)", variable=self.temp_sugar,
+                                           command=lambda: self.set_sugar('Full'))
+        radiobutton_half = ttk.Radiobutton(labelframe_sugarlevel, text="Half (50%)", variable=self.temp_sugar,
+                                           command=lambda: self.set_sugar('Half'))
+        radiobutton_none = ttk.Radiobutton(labelframe_sugarlevel, text="None (0%)", variable=self.temp_sugar,
+                                           command=lambda: self.set_sugar('None'))
+        radiobutton_full.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
+        radiobutton_half.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
+        radiobutton_none.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
 
         label_quantity = ttk.Label(labelframe_numdrink, text="Quantity", anchor=tk.E)
         entry_quantity = ttk.Entry(labelframe_numdrink)
@@ -398,11 +403,11 @@ class Yolotea(ttk.Frame):
 
         label_chosenflavor = ttk.Label(labelframe_chosenflavor, textvariable=self.h_str)
         label_chosenflavor.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
-        radiobox_L = ttk.Radiobutton(labelframe_size, text="Large (L)", command=lambda: self.set_size('Large'))
-        radiobox_XL = ttk.Radiobutton(labelframe_size, text="Extra Large (XL)",
-                                      command=lambda: self.set_size('Extra LArge'))
-        radiobox_L.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
-        radiobox_XL.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
+        radiobutton_l = ttk.Radiobutton(labelframe_size, text="Large (L)", command=lambda: self.set_size('Large'))
+        radiobutton_xl = ttk.Radiobutton(labelframe_size, text="Extra Large (XL)",
+                                         command=lambda: self.set_size('Extra LArge'))
+        radiobutton_l.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
+        radiobutton_xl.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
 
         label_quantity = ttk.Label(labelframe_numdrink, text="Quantity", anchor=tk.E)
         entry_quantity = ttk.Entry(labelframe_numdrink)
@@ -436,60 +441,65 @@ class Yolotea(ttk.Frame):
         self.temp_sinkers = sinkers
 
     def add_to_cart(self, src):
-        if src == 'm':
-            flavor = self.temp_flavor
-            sugar = self.temp_sugar
-            size = self.temp_size
-            quantity = self.temp_quantity
-            sinkers = []
 
-            order = MilkTea(flavor=flavor, sugar=sugar, size=size, quantity=quantity, sinkers=sinkers)
-            if self.order_label.cget("text") is None:
-                text = order.flavor + ' ' + order.size + ' ' + order.sugar
-                self.order_label.configure(text=text)
-            else:
-                text = self.order_label.cget("text") + '\n' + order.flavor + ' ' + order.size + ' ' + order.sugar
-                self.order_label.configure(text=text)
+        if self.temp_flavor and self.temp_sugar and self.temp_size:
+            customer = popups.popup_add_to_cart(self)
 
-        elif src == 'f':
-            flavor = self.temp_flavor
-            sugar = self.temp_sugar
-            size = self.temp_size
-            quantity = self.temp_quantity
-            sinkers = []
-            order = FruitTea(flavor=flavor, sugar=sugar, size=size, quantity=quantity, sinkers=sinkers)
-            if self.order_label.cget("text") is None:
-                text = order.flavor + ' ' + order.size + ' ' + order.sugar
-                self.order_label.configure(text=text)
-            else:
-                text = self.order_label.cget("text") + '\n' + order.flavor + ' ' + order.size + ' ' + order.sugar
-                self.order_label.configure(text=text)
+            if customer and src == 'm':
+                flavor = self.temp_flavor
+                sugar = self.temp_sugar
+                size = self.temp_size
+                quantity = self.temp_quantity
+                sinkers = []
 
-        elif src == 'h':
-            flavor = self.temp_flavor
-            size = self.temp_size
-            quantity = self.temp_quantity
-            order = HotTea(flavor=flavor, size=size, quantity=quantity)
-            if self.order_label.cget("text") is None:
-                text = order.flavor + ' ' + order.size
-                self.order_label.configure(text=text)
-            else:
-                text = self.order_label.cget("text") + '\n' + order.flavor + ' ' + order.size
-                self.order_label.configure(text=text)
+                order = MilkTea(flavor=flavor, sugar=sugar, size=size, quantity=quantity, sinkers=sinkers,
+                                customer=customer)
+                self.print_to_cart(order)
 
-        elif src == 's':
-            order = YoloSnack()
+            elif customer and src == 'f':
+                flavor = self.temp_flavor
+                sugar = self.temp_sugar
+                size = self.temp_size
+                quantity = self.temp_quantity
+                sinkers = []
+                order = FruitTea(flavor=flavor, sugar=sugar, size=size, quantity=quantity, sinkers=sinkers,
+                                 customer=customer)
+                self.print_to_cart(order)
 
-        elif src == 'c':
-            order = YoloCOmbo()
+            elif customer and src == 'h':
+                flavor = self.temp_flavor
+                size = self.temp_size
+                quantity = self.temp_quantity
+                order = HotTea(flavor=flavor, size=size, quantity=quantity, customer=customer)
+                self.print_to_cart(order)
+
+            elif customer and src == 's':
+                order = YoloSnack()
+
+            elif customer and src == 'c':
+                order = YoloCombo()
+
+        else:
+            popups.popup_incomplete_details_error(self)
 
         return True
+
+    def print_to_cart(self, order):
+        entry = order.flavor + ' ' + order.customer
+        self.order_listbox.insert(END, entry)
+
+        return True
+
+    def cancel_order(self):
+        value = popups.popup_cancel_order(self)
+        if value == 1:
+            self.order_listbox.delete(ANCHOR)
 
 
 def main():
 
     root = tk.Tk()
-    app = Yolotea(root)
+    Yolotea(root)
     root.state('zoomed')
     root.mainloop()
 
