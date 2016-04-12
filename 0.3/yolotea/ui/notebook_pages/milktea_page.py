@@ -10,7 +10,6 @@ class MilkTeaPage(ttk.Frame):
         ttk.Frame.__init__(self, parent)
         self.parent = parent
         self.listbox = listbox
-        self.sinkers = []
         self.order_manager = order_manager
 
         labelframe = ttk.LabelFrame(self, text='Order Details')
@@ -71,30 +70,31 @@ class MilkTeaPage(ttk.Frame):
         self.add_to_cart_btn.grid(row=1, column=0, padx=10, pady=10)
 
     def add_to_cart_command(self):
-        flavor = self.flavor.get()
-        size = self.size.get()
-        sugar_level = self.sugar_level.get()
-        popping_bobba = self.popping_bobba_entry.get()
-        black_pearls = self.black_pearls_entry.get()
-        nata_crystals = self.nata_crystals_entry.get()
-        foam = self.foam_entry.get()
-        panacotta = self.panacotta_entry.get()
-
-        if popping_bobba is not None:
-            self.sinkers.append(dict(name='popping_bobba', quantity=popping_bobba))
-        if black_pearls is not None:
-            self.sinkers.append(dict(name='black_pearls', quantity=black_pearls))
-        if nata_crystals is not None:
-            self.sinkers.append(dict(name='nata_crystals', quantity=nata_crystals))
-        if foam is not None:
-            self.sinkers.append(dict(name='foam', quantity=foam))
-        if panacotta is not None:
-            self.sinkers.append(dict(name='panacotta', quantity=panacotta))
-
         customer = customer_popup(self)
 
         if customer is not None:
-            order = MilkTea(flavor, size, sugar_level, self.sinkers, customer)
+            flavor = self.flavor.get()
+            size = self.size.get()
+            sugar_level = self.sugar_level.get()
+            popping_bobba = self.popping_bobba_entry.get()
+            black_pearls = self.black_pearls_entry.get()
+            nata_crystals = self.nata_crystals_entry.get()
+            foam = self.foam_entry.get()
+            panacotta = self.panacotta_entry.get()
+            sinkers = []
+
+            if len(popping_bobba) > 0:
+                sinkers.append(dict(name='popping_bobba', quantity=popping_bobba))
+            if len(black_pearls) > 0:
+                sinkers.append(dict(name='black_pearls', quantity=black_pearls))
+            if len(nata_crystals) > 0:
+                sinkers.append(dict(name='nata_crystals', quantity=nata_crystals))
+            if len(foam) > 0:
+                sinkers.append(dict(name='foam', quantity=foam))
+            if len(panacotta) > 0:
+                sinkers.append(dict(name='panacotta', quantity=panacotta))
+
+            order = MilkTea(flavor, size, sugar_level, sinkers, customer)
             self.order_manager.add_order(order)
             self.listbox.insert(tk.END, order.flavor + ' - ' + order.customer)
             print 'order successfully placed'

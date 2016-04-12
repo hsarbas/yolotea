@@ -26,7 +26,7 @@ class TakeOrderFrame(ttk.Frame):
         self.cancel_btn = ttk.Button(cart_labelframe, text='Cancel Order', command=self.cancel_order)
         self.cancel_btn.grid(row=1, column=0, padx=10, pady=10)
 
-        self.checkout_btn = ttk.Button(cart_labelframe, text='Checkout Order', command=None)
+        self.checkout_btn = ttk.Button(cart_labelframe, text='Checkout Order', command=self.checkout)
         self.checkout_btn.grid(row=2, column=0, padx=10, pady=10)
 
         # Notebook
@@ -51,3 +51,7 @@ class TakeOrderFrame(ttk.Frame):
 
     def cancel_order(self):
         self.order_listbox.delete(self.order_listbox.curselection())
+
+    def checkout(self):
+        self.order_manager.create_file()
+        del self.order_manager

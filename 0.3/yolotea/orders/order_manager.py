@@ -18,3 +18,16 @@ class OrderManager(object):
 
     def view_all_orders(self):
         return self.orders
+
+    def create_file(self):
+        print 'pass'
+        f = open('files/order.txt', 'w')
+
+        for order in self.orders:
+            f.write('Flavor: ' + order.flavor + '\n')
+            f.write('Size: ' + order.size + '\n')
+            f.write('Sugar Level: ' + order.sugar + '\n')
+            f.write('Sinkers:' + '\n')
+            for sinker in order.sinkers:
+                f.write(sinker['name'] + ': ' + sinker['quantity'] + '\n')
+            f.write('Customer: ' + order.customer + '\n' + '\n')

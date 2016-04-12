@@ -1,0 +1,6 @@
+Flavor: Yolavit
+Size: Medium
+Sugar Level: Full (100%)
+Sinkers:
+Customer: asd
+
