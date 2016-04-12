@@ -1,16 +1,17 @@
 import Tkinter as tk
 import ttk
 from yolotea.orders.concrete import *
+from yolotea.ui.popups.customer_popup import customer_popup
 
 
 class MilkTeaPage(ttk.Frame):
 
-    def __init__(self, parent, listbox):
+    def __init__(self, parent, listbox, order_manager):
         ttk.Frame.__init__(self, parent)
         self.parent = parent
         self.listbox = listbox
-        self.order = None
         self.sinkers = []
+        self.order_manager = order_manager
 
         labelframe = ttk.LabelFrame(self, text='Order Details')
         labelframe.grid(row=0, column=0, padx=10, pady=20)
@@ -90,6 +91,12 @@ class MilkTeaPage(ttk.Frame):
         if panacotta is not None:
             self.sinkers.append(dict(name='panacotta', quantity=panacotta))
 
-        self.order = MilkTea(flavor, size, sugar_level, self.sinkers, 'customer')
-        entry = self.order.flavor + ' - ' + self.order.customer
-        self.listbox.insert(tk.END, entry)
+        customer = customer_popup(self)
+
+        if customer is not None:
+            order = MilkTea(flavor, size, sugar_level, self.sinkers, customer)
+            self.order_manager.add_order(order)
+            self.listbox.insert(tk.END, order.flavor + ' - ' + order.customer)
+            print 'order successfully placed'
+        else:
+            print 'order not placed'

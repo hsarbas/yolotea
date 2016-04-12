@@ -5,6 +5,7 @@ from yolotea.ui.notebook_pages.fruittea_page import FruitTeaPage
 from yolotea.ui.notebook_pages.hottea_page import HotTeaPage
 from yolotea.ui.notebook_pages.combo_page import ComboPage
 from yolotea.ui.notebook_pages.snacks_page import SnacksPage
+from yolotea.orders.order_manager import OrderManager
 
 
 class TakeOrderFrame(ttk.Frame):
@@ -12,6 +13,8 @@ class TakeOrderFrame(ttk.Frame):
     def __init__(self, parent):
         ttk.Frame.__init__(self, parent)
         self.parent = parent
+
+        self.order_manager = OrderManager()
 
         cart_labelframe = ttk.LabelFrame(self, text='Cart Details')
         cart_labelframe.grid(row=0, column=1, padx=20, pady=20, sticky=tk.N)
@@ -31,7 +34,7 @@ class TakeOrderFrame(ttk.Frame):
         self.notebook = ttk.Notebook(self)
         self.notebook.grid(row=0, column=0, padx=20, pady=20, sticky=tk.N)
 
-        self.milktea_page = MilkTeaPage(self.notebook, self.order_listbox)
+        self.milktea_page = MilkTeaPage(self.notebook, self.order_listbox, self.order_manager)
         self.notebook.add(self.milktea_page, text='MilkTea')
 
         self.fruittea_page = FruitTeaPage(self.notebook)

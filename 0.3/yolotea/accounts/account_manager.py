@@ -31,6 +31,7 @@ class AccountManager(object):
         for account in self.accounts:
             if account['id'] == _id:
                 self.accounts.remove(account)
+                del account
 
         with open('../files/accounts.json', 'w+') as f:
             json.dump(self.accounts, f, indent=4)
@@ -47,7 +48,7 @@ class AccountManager(object):
         else:
             for account in self.accounts:
                 if account['id'] == _id:
-                    pass  # popup view account
+                    return account
 
     def view_all(self):
         if os.path.exists('../files/accounts.json'):
