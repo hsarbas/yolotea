@@ -1,3 +1,6 @@
+import os
+
+
 class OrderManager(object):
 
     def __init__(self):
@@ -20,8 +23,10 @@ class OrderManager(object):
         return self.orders
 
     def create_file(self):
-        print 'pass'
-        f = open('files/order.txt', 'w')
+        path, dirs, files = os.walk("files/orders/").next()
+        file_count = len(files)
+
+        f = open('files/orders/' + str(file_count) + '.txt', 'w')
 
         for order in self.orders:
             f.write('Flavor: ' + order.flavor + '\n')
@@ -31,3 +36,6 @@ class OrderManager(object):
             for sinker in order.sinkers:
                 f.write(sinker['name'] + ': ' + sinker['quantity'] + '\n')
             f.write('Customer: ' + order.customer + '\n' + '\n')
+
+    def delete_all_files(self):
+        pass

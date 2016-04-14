@@ -13,10 +13,11 @@ from yolotea.ui.frames.view_sales_frame import ViewSalesFrame
 
 class Menubar(object):
 
-    def __init__(self, parent, curr_frame):
+    def __init__(self, parent, curr_frame, account_logged_in):
         self.parent = parent
         self.curr_frame = curr_frame
         self.menu_val = None
+        self.account_logged_in = account_logged_in
 
         menubar = tk.Menu(self.parent)
 
@@ -65,7 +66,7 @@ class Menubar(object):
 
     def my_account_command(self):
         self.curr_frame.destroy()
-        self.curr_frame = MyAccountFrame(self.parent)
+        self.curr_frame = MyAccountFrame(self.parent, self.account_logged_in)
         self.curr_frame.pack()
 
     def view_all_accounts_command(self):
